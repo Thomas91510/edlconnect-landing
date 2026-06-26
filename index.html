@@ -166,6 +166,7 @@ footer{background:#1a1a1a;color:rgba(255,255,255,.5);padding:40px 24px;text-alig
       <a href="#pricing">Tarifs</a>
       <a href="#testimonials">Avis</a>
       <a href="#faq">FAQ</a>
+      <a href="#" onclick="showModal('modal-contact');return false;">Contact</a>
       <a href="https://app.edlconnect.fr" style="font-size:14px;color:var(--text2);transition:color .15s" onmouseover="this.style.color='var(--blue)'" onmouseout="this.style.color='var(--text2)'">Se connecter</a>
       <a href="https://app.edlconnect.fr" class="nav-cta">Essai gratuit 15 jours</a>
     </div>
@@ -453,9 +454,11 @@ footer{background:#1a1a1a;color:rgba(255,255,255,.5);padding:40px 24px;text-alig
       <a href="#features">Fonctionnalités</a>
       <a href="#pricing">Tarifs</a>
       <a href="#faq">FAQ</a>
+      <a href="#" onclick="showModal('modal-contact');return false;">Contact</a>
       <a href="https://app.edlconnect.fr">Accéder à l'app</a>
-      <a href="#">Mentions légales</a>
-      <a href="#">Politique de confidentialité</a>
+      <a href="#" onclick="showModal('modal-mentions');return false;">Mentions légales & CGU</a>
+      <a href="#" onclick="showModal('modal-mentions');return false;">Politique de confidentialité</a>
+      <a href="#" onclick="showModal('modal-contact');return false;">Contact</a>
     </div>
     <div class="footer-copy">© 2026 EDLConnect — L'outil CRM pensé pour les experts en état des lieux</div>
   </div>
@@ -476,6 +479,152 @@ function setToggle(mode){
     document.getElementById('pro-price').innerHTML='35 €<span>/mois</span>';
     document.getElementById('pro-desc').textContent='Pour les experts avec une activité intense.';
   }
+}
+</script>
+
+<!-- COOKIE BANNER -->
+<div id="cookie-banner" style="display:none;position:fixed;bottom:0;left:0;right:0;z-index:9999;background:#1a1a1a;color:#fff;padding:16px 24px;box-shadow:0 -4px 20px rgba(0,0,0,.2)">
+  <div style="max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap">
+    <div style="flex:1;min-width:280px">
+      <div style="font-size:13px;font-weight:600;margin-bottom:4px">🍪 Nous utilisons des cookies</div>
+      <div style="font-size:12px;color:rgba(255,255,255,.7);line-height:1.6">EDLConnect utilise des cookies essentiels au fonctionnement du site. En continuant, vous acceptez notre <a href="#mentions-legales" onclick="showModal('modal-mentions')" style="color:#93c5fd;text-decoration:underline">politique de confidentialité</a>.</div>
+    </div>
+    <div style="display:flex;gap:10px;flex-shrink:0">
+      <button onclick="refuseCookies()" style="background:none;border:1px solid rgba(255,255,255,.3);color:rgba(255,255,255,.7);padding:8px 16px;border-radius:8px;cursor:pointer;font-size:13px;font-family:inherit">Refuser</button>
+      <button onclick="acceptCookies()" style="background:#185FA5;color:#fff;border:none;padding:8px 20px;border-radius:8px;cursor:pointer;font-size:13px;font-weight:600;font-family:inherit">Accepter</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL MENTIONS LEGALES -->
+<div id="modal-mentions" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.5);align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto">
+  <div style="background:#fff;border-radius:16px;padding:32px;max-width:700px;width:100%;position:relative">
+    <button onclick="closeModal('modal-mentions')" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:#999">✕</button>
+    <h2 style="font-size:20px;font-weight:700;margin-bottom:20px;color:#1a1a1a">Mentions légales</h2>
+    <div style="font-size:13px;color:#6b6b6b;line-height:1.8">
+      <h3 style="font-size:14px;font-weight:600;color:#1a1a1a;margin:16px 0 6px">Éditeur du site</h3>
+      <p>EDLConnect est édité par Thomas Langlade, expert en état des lieux.<br>
+      Email : contact@edl-idf.com<br>
+      Siège social : 18 Grande Rue, 91510 Lardy</p>
+      <h3 style="font-size:14px;font-weight:600;color:#1a1a1a;margin:16px 0 6px">Hébergement</h3>
+      <p>Le site est hébergé par Vercel Inc., 340 Pine Street, Suite 701, San Francisco, CA 94104, États-Unis.</p>
+      <h3 style="font-size:14px;font-weight:600;color:#1a1a1a;margin:16px 0 6px">Propriété intellectuelle</h3>
+      <p>L'ensemble du contenu de ce site (textes, images, logos) est protégé par le droit d'auteur. Toute reproduction est interdite sans autorisation préalable.</p>
+      <h3 style="font-size:14px;font-weight:600;color:#1a1a1a;margin:16px 0 6px">Données personnelles (RGPD)</h3>
+      <p>Les données collectées lors de l'inscription (email, nom d'entreprise) sont utilisées uniquement pour la fourniture du service EDLConnect. Elles ne sont jamais revendues à des tiers.<br><br>
+      Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour exercer ces droits : contact@edl-idf.com</p>
+      <h3 style="font-size:14px;font-weight:600;color:#1a1a1a;margin:16px 0 6px">Cookies</h3>
+      <p>Ce site utilise uniquement des cookies essentiels au fonctionnement du service (authentification, préférences). Aucun cookie publicitaire n'est utilisé.</p>
+      <h3 style="font-size:14px;font-weight:600;color:#1a1a1a;margin:16px 0 6px">Conditions Générales d'Utilisation</h3>
+      <p>L'accès et l'utilisation d'EDLConnect impliquent l'acceptation des présentes CGU.<br><br>
+      <strong>Abonnement :</strong> L'essai gratuit de 15 jours est sans engagement. À l'issue de la période d'essai, l'accès est suspendu jusqu'à souscription d'un abonnement payant.<br><br>
+      <strong>Résiliation :</strong> Vous pouvez résilier votre abonnement à tout moment. Aucun remboursement n'est effectué pour la période en cours.<br><br>
+      <strong>Responsabilité :</strong> EDLConnect ne saurait être tenu responsable des pertes de données. Il est recommandé d'effectuer des sauvegardes régulières.<br><br>
+      <strong>Droit applicable :</strong> Les présentes CGU sont soumises au droit français. Tout litige relève de la compétence des tribunaux français.</p>
+    </div>
+    <button onclick="closeModal('modal-mentions')" style="margin-top:20px;background:#185FA5;color:#fff;border:none;padding:10px 24px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:500;font-family:inherit">Fermer</button>
+  </div>
+</div>
+
+<!-- MODAL CONTACT -->
+<div id="modal-contact" style="display:none;position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.5);align-items:center;justify-content:center;padding:20px">
+  <div style="background:#fff;border-radius:16px;padding:32px;max-width:520px;width:100%;position:relative">
+    <button onclick="closeModal('modal-contact')" style="position:absolute;top:16px;right:16px;background:none;border:none;font-size:20px;cursor:pointer;color:#999">✕</button>
+    <h2 style="font-size:20px;font-weight:700;margin-bottom:6px;color:#1a1a1a">Nous contacter</h2>
+    <p style="font-size:13px;color:#6b6b6b;margin-bottom:20px">Une question ? Notre équipe vous répond sous 24h.</p>
+    <div id="contact-success" style="display:none;background:#EAF3DE;color:#3B6D11;padding:12px 16px;border-radius:8px;font-size:13px;margin-bottom:16px">✅ Message envoyé ! Nous vous répondrons sous 24h.</div>
+    <div id="contact-error" style="display:none;background:#FCEBEB;color:#A32D2D;padding:12px 16px;border-radius:8px;font-size:13px;margin-bottom:16px">❌ Erreur lors de l'envoi. Contactez-nous directement à contact@edl-idf.com</div>
+    <label style="font-size:12px;color:#6b6b6b;display:block;margin-bottom:4px">Votre nom *</label>
+    <input type="text" id="contact-nom" placeholder="Marie Dupont" style="width:100%;padding:10px 14px;border:1px solid #e5e5e2;border-radius:8px;font-size:14px;font-family:inherit;margin-bottom:12px;outline:none">
+    <label style="font-size:12px;color:#6b6b6b;display:block;margin-bottom:4px">Email professionnel *</label>
+    <input type="email" id="contact-email" placeholder="marie@monentreprise.fr" style="width:100%;padding:10px 14px;border:1px solid #e5e5e2;border-radius:8px;font-size:14px;font-family:inherit;margin-bottom:12px;outline:none">
+    <label style="font-size:12px;color:#6b6b6b;display:block;margin-bottom:4px">Sujet</label>
+    <select id="contact-sujet" style="width:100%;padding:10px 14px;border:1px solid #e5e5e2;border-radius:8px;font-size:14px;font-family:inherit;margin-bottom:12px;outline:none;background:#fff">
+      <option>Question sur les fonctionnalités</option>
+      <option>Problème technique</option>
+      <option>Question sur les tarifs</option>
+      <option>Demande de démo</option>
+      <option>Autre</option>
+    </select>
+    <label style="font-size:12px;color:#6b6b6b;display:block;margin-bottom:4px">Message *</label>
+    <textarea id="contact-message" placeholder="Votre message…" style="width:100%;padding:10px 14px;border:1px solid #e5e5e2;border-radius:8px;font-size:14px;font-family:inherit;margin-bottom:16px;outline:none;min-height:100px;resize:vertical"></textarea>
+    <button onclick="sendContactForm()" id="contact-btn" style="width:100%;background:#185FA5;color:#fff;border:none;padding:12px;border-radius:8px;cursor:pointer;font-size:14px;font-weight:600;font-family:inherit">Envoyer le message</button>
+    <p style="font-size:11px;color:#999;text-align:center;margin-top:10px">Ou écrivez-nous directement : <a href="mailto:contact@edl-idf.com" style="color:#185FA5">contact@edl-idf.com</a></p>
+  </div>
+</div>
+
+<script>
+// ─── MODALS ───────────────────────────────────────────────
+function showModal(id){
+  const m = document.getElementById(id);
+  if(m){ m.style.display='flex'; document.body.style.overflow='hidden'; }
+}
+function closeModal(id){
+  const m = document.getElementById(id);
+  if(m){ m.style.display='none'; document.body.style.overflow=''; }
+}
+// Fermer en cliquant en dehors
+['modal-mentions','modal-contact'].forEach(id=>{
+  const m = document.getElementById(id);
+  if(m) m.addEventListener('click', e=>{ if(e.target===m) closeModal(id); });
+});
+
+// ─── COOKIES ──────────────────────────────────────────────
+function acceptCookies(){
+  localStorage.setItem('edl_cookies', 'accepted');
+  document.getElementById('cookie-banner').style.display='none';
+}
+function refuseCookies(){
+  localStorage.setItem('edl_cookies', 'refused');
+  document.getElementById('cookie-banner').style.display='none';
+}
+// Afficher le banner si pas encore choisi
+if(!localStorage.getItem('edl_cookies')){
+  setTimeout(()=>{ document.getElementById('cookie-banner').style.display='block'; }, 1500);
+}
+
+// ─── FORMULAIRE CONTACT ───────────────────────────────────
+async function sendContactForm(){
+  const nom     = document.getElementById('contact-nom').value.trim();
+  const email   = document.getElementById('contact-email').value.trim();
+  const sujet   = document.getElementById('contact-sujet').value;
+  const message = document.getElementById('contact-message').value.trim();
+  const btn     = document.getElementById('contact-btn');
+  const success = document.getElementById('contact-success');
+  const error   = document.getElementById('contact-error');
+
+  if(!nom || !email || !message){
+    error.textContent = '⚠️ Merci de remplir tous les champs obligatoires.';
+    error.style.display='block'; success.style.display='none';
+    return;
+  }
+
+  btn.textContent = 'Envoi en cours…'; btn.disabled = true;
+
+  try {
+    const resp = await fetch('https://edlconnect-crm-v2.vercel.app/api/send-email', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        sender: { name: 'EDLConnect Contact', email: 'contact@edl-idf.com' },
+        to: [{ email: 'contact@edl-idf.com', name: 'Thomas Langlade' }],
+        replyTo: { email: email, name: nom },
+        subject: `[EDLConnect] Contact : ${sujet} — ${nom}`,
+        htmlContent: `<p><strong>Nom :</strong> ${nom}</p><p><strong>Email :</strong> ${email}</p><p><strong>Sujet :</strong> ${sujet}</p><hr><p>${message.replace(/\n/g,'<br>')}</p>`,
+        textContent: `Nom : ${nom}\nEmail : ${email}\nSujet : ${sujet}\n\nMessage :\n${message}`
+      })
+    });
+    if(resp.ok){
+      success.style.display='block'; error.style.display='none';
+      document.getElementById('contact-nom').value='';
+      document.getElementById('contact-email').value='';
+      document.getElementById('contact-message').value='';
+    } else { throw new Error(); }
+  } catch(e) {
+    error.textContent = '❌ Erreur lors de l\'envoi. Contactez-nous directement à contact@edl-idf.com';
+    error.style.display='block'; success.style.display='none';
+  }
+  btn.textContent = 'Envoyer le message'; btn.disabled = false;
 }
 </script>
 </body>
