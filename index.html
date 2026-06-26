@@ -29,6 +29,15 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
 .nav-links{display:flex;align-items:center;gap:28px}
 .nav-links a{font-size:14px;color:var(--text2);transition:color .15s}
 .nav-links a:hover{color:var(--blue)}
+.nav-mobile-login{display:none;font-size:13px;color:var(--blue);font-weight:500;padding:7px 14px;border:1.5px solid var(--blue);border-radius:var(--radius)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.hamburger span{width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s}
+.mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);padding:16px 24px;z-index:99;box-shadow:0 4px 20px rgba(0,0,0,.08)}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;padding:12px 0;font-size:15px;color:var(--text2);border-bottom:1px solid var(--border)}
+.mobile-menu a:last-child{border-bottom:none}
+.mobile-menu .mob-cta{margin-top:12px;background:var(--blue);color:#fff;padding:12px;border-radius:var(--radius);text-align:center;font-weight:600;border-bottom:none}
+.mobile-menu .mob-login{color:var(--blue);font-weight:500}
 .nav-cta{background:#fff;color:var(--blue);padding:9px 20px;border-radius:var(--radius);font-size:14px;font-weight:600;transition:all .15s;border:2px solid var(--blue)}
 .nav-cta:hover{background:var(--blue);color:#fff}
 /* HERO */
@@ -156,6 +165,8 @@ footer{background:#1a1a1a;color:rgba(255,255,255,.5);padding:40px 24px;text-alig
   .mock-content{grid-template-columns:1fr;height:auto}
   .mock-sidebar{display:none}
   .nav-links{display:none}
+  .nav-mobile-login{display:none}
+  .hamburger{display:flex}
   .stat-sep{display:none}
 }
 </style>
@@ -185,7 +196,20 @@ footer{background:#1a1a1a;color:rgba(255,255,255,.5);padding:40px 24px;text-alig
       <a href="#" onclick="showModal('modal-contact');return false;">Contact</a>
       <a href="https://app.edlconnect.fr" style="font-size:14px;color:var(--text2);transition:color .15s" onmouseover="this.style.color='var(--blue)'" onmouseout="this.style.color='var(--text2)'">Se connecter</a>
       <a href="https://app.edlconnect.fr" class="nav-cta">Essai gratuit 15 jours</a>
+      <button class="hamburger" id="hamburger-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
+  </div>
+  <!-- Menu mobile -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#features" onclick="closeMobileMenu()">Fonctionnalités</a>
+    <a href="#pricing" onclick="closeMobileMenu()">Tarifs</a>
+    <a href="#testimonials" onclick="closeMobileMenu()">Avis</a>
+    <a href="#faq" onclick="closeMobileMenu()">FAQ</a>
+    <a href="#" onclick="showModal('modal-contact');closeMobileMenu();return false;">Contact</a>
+    <a href="https://app.edlconnect.fr" class="mob-login">Se connecter</a>
+    <a href="https://app.edlconnect.fr" class="mob-cta">Essai gratuit 15 jours →</a>
   </div>
 </nav>
 
@@ -480,6 +504,22 @@ footer{background:#1a1a1a;color:rgba(255,255,255,.5);padding:40px 24px;text-alig
 </footer>
 
 <script>
+function toggleMobileMenu(){
+  const menu = document.getElementById('mobile-menu');
+  menu.classList.toggle('open');
+}
+function closeMobileMenu(){
+  document.getElementById('mobile-menu').classList.remove('open');
+}
+// Fermer menu au clic en dehors
+document.addEventListener('click', e=>{
+  const menu = document.getElementById('mobile-menu');
+  const btn = document.getElementById('hamburger-btn');
+  if(menu && btn && !menu.contains(e.target) && !btn.contains(e.target)){
+    menu.classList.remove('open');
+  }
+});
+
 function setToggle(mode){
   document.getElementById('btn-monthly').classList.toggle('active', mode==='monthly');
   document.getElementById('btn-annual').classList.toggle('active', mode==='annual');
