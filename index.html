@@ -30,7 +30,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(255,255,255,
 .nav-links a{font-size:14px;color:var(--text2);transition:color .15s}
 .nav-links a:hover{color:var(--blue)}
 .nav-mobile-login{display:none;font-size:13px;color:var(--blue);font-weight:500;padding:7px 14px;border:1.5px solid var(--blue);border-radius:var(--radius)}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.hamburger{display:flex;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
 .hamburger span{width:22px;height:2px;background:var(--text);border-radius:2px;transition:all .3s}
 .mobile-menu{display:none;position:fixed;top:64px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);padding:16px 24px;z-index:99;box-shadow:0 4px 20px rgba(0,0,0,.08)}
 .mobile-menu.open{display:block}
@@ -160,13 +160,17 @@ footer{background:#1a1a1a;color:rgba(255,255,255,.5);padding:40px 24px;text-alig
 .footer-links a:hover{color:rgba(255,255,255,.8)}
 .footer-copy{font-size:12px}
 /* RESPONSIVE */
+@media(min-width:769px){
+  .hamburger{display:none !important}
+  .mobile-menu{display:none !important}
+}
 @media(max-width:768px){
   .features-grid,.pricing-grid,.testi-grid{grid-template-columns:1fr}
   .mock-content{grid-template-columns:1fr;height:auto}
   .mock-sidebar{display:none}
-  .nav-links{display:none}
+  .nav-links{display:none !important}
   .nav-mobile-login{display:none}
-  .hamburger{display:flex}
+  .hamburger{display:flex !important}
   .stat-sep{display:none}
 }
 </style>
