@@ -661,10 +661,17 @@ async function sendContactForm(){
   btn.textContent = 'Envoi en cours…'; btn.disabled = true;
 
   try {
-    const resp = await fetch('https://app.lokentia.fr/api/contact-form', {
+    const resp = await fetch('https://app.lokentia.fr/api/send-email', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ nom, email, sujet, message })
+      body: JSON.stringify({
+        sender: { name: 'Lokentia Contact', email: 'contact@lokentia.fr' },
+        to: [{ email: 'contact@lokentia.fr', name: 'Thomas Langlade' }],
+        replyTo: { email: email, name: nom },
+        subject: `[Lokentia] Contact : ${sujet} — ${nom}`,
+        htmlContent: `<p><strong>Nom :</strong> ${nom}</p><p><strong>Email :</strong> ${email}</p><p><strong>Sujet :</strong> ${sujet}</p><hr><p>${message.replace(/\n/g,'<br>')}</p>`,
+        textContent: `Nom : ${nom}\nEmail : ${email}\nSujet : ${sujet}\n\nMessage :\n${message}`
+      })
     });
     if(resp.ok){
       success.style.display='block'; error.style.display='none';
