@@ -560,9 +560,11 @@ function setToggle(mode){
     <h2 style="font-size:20px;font-weight:700;margin-bottom:20px;color:#1a1a1a">Mentions légales</h2>
     <div style="font-size:13px;color:#6b6b6b;line-height:1.8">
       <h3 style="font-size:14px;font-weight:600;color:#1a1a1a;margin:16px 0 6px">Éditeur du site</h3>
-      <p>Lokentia est édité par Thomas Langlade, expert en état des lieux.<br>
-      Email : contact@lokentia.fr<br>
-      Siège social : 18 Grande Rue, 91510 Lardy</p>
+      <p>Lokentia est édité par ImmoCheck EDL, SASU au capital de 150 €, immatriculée au RCS d'Évry sous le numéro 994 114 163.<br>
+      Siège social : 24 Route de Cheptainville, 91630 Marolles-en-Hurepoix<br>
+      N° TVA intracommunautaire : FR95 994 114 163<br>
+      Représentée par Thomas Langlade, Président.<br>
+      Email : contact@lokentia.fr</p>
       <h3 style="font-size:14px;font-weight:600;color:#1a1a1a;margin:16px 0 6px">Hébergement</h3>
       <p>Le site est hébergé par Vercel Inc., 340 Pine Street, Suite 701, San Francisco, CA 94104, États-Unis.</p>
       <h3 style="font-size:14px;font-weight:600;color:#1a1a1a;margin:16px 0 6px">Propriété intellectuelle</h3>
@@ -659,17 +661,10 @@ async function sendContactForm(){
   btn.textContent = 'Envoi en cours…'; btn.disabled = true;
 
   try {
-    const resp = await fetch('https://app.lokentia.fr/api/send-email', {
+    const resp = await fetch('https://app.lokentia.fr/api/contact-form', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        sender: { name: 'Lokentia Contact', email: 'contact@lokentia.fr' },
-        to: [{ email: 'contact@lokentia.fr', name: 'Thomas Langlade' }],
-        replyTo: { email: email, name: nom },
-        subject: `[Lokentia] Contact : ${sujet} — ${nom}`,
-        htmlContent: `<p><strong>Nom :</strong> ${nom}</p><p><strong>Email :</strong> ${email}</p><p><strong>Sujet :</strong> ${sujet}</p><hr><p>${message.replace(/\n/g,'<br>')}</p>`,
-        textContent: `Nom : ${nom}\nEmail : ${email}\nSujet : ${sujet}\n\nMessage :\n${message}`
-      })
+      body: JSON.stringify({ nom, email, sujet, message })
     });
     if(resp.ok){
       success.style.display='block'; error.style.display='none';
