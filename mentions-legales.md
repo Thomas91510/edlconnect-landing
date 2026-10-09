@@ -1,6 +1,6 @@
 # Mentions légales — lokentia.fr et app.lokentia.fr
 
-*[DATE DE MISE EN LIGNE]*
+*9 octobre 2026*
 
 **Éditeur du site et du service**
 Lokentia est édité par **ImmoCheck EDL**, SASU au capital de 150 €, immatriculée au RCS d'Évry sous le numéro 994 114 163.
@@ -13,13 +13,13 @@ Thomas Langlade, Président.
 
 **Hébergement**
 Application et site hébergés par **Vercel Inc.**, 650 California St, San Francisco, CA 94108, États-Unis — vercel.com.
-Données applicatives hébergées par **Supabase Inc.** (infrastructure localisée dans l'Union européenne — [région à confirmer]) — supabase.com.
+Données applicatives hébergées par **Supabase Inc.** (infrastructure localisée dans l'Union européenne — Suède, Stockholm) — supabase.com.
 
 **Propriété intellectuelle**
 L'ensemble des éléments composant le site et l'application (marque Lokentia, logo, interfaces, textes, code) est protégé par le droit de la propriété intellectuelle et demeure la propriété exclusive de l'Éditeur. Toute reproduction non autorisée est interdite.
 
 **Données personnelles**
-Le traitement des données personnelles est décrit dans la [Politique de confidentialité](/confidentialite). Pour toute question ou exercice de droits : contact@lokentia.fr.
+Le traitement des données personnelles est décrit dans la [Politique de confidentialité](confidentialite.html). Pour toute question ou exercice de droits : contact@lokentia.fr.
 
 **Signalement**
 Pour signaler un contenu ou un usage illicite du service : contact@lokentia.fr.

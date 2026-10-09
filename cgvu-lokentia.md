@@ -1,6 +1,6 @@
 # Conditions Générales de Vente et d'Utilisation (CGVU) — Lokentia
 
-*Version 1.0 — en vigueur au [DATE DE MISE EN LIGNE]*
+*Version 1.0 — en vigueur au 9 octobre 2026*
 
 > ⚠️ **Document préparatoire.** Ce texte constitue une base de travail sérieuse adaptée au fonctionnement réel de Lokentia, mais il doit être relu et validé par un avocat avant vos premiers abonnements payants.
 
@@ -16,7 +16,7 @@ Contact : contact@lokentia.fr · N° TVA intracommunautaire : FR95 994 114 163
 
 ## 2. Objet et définitions
 
-Lokentia est une application en ligne (SaaS) de gestion d'activité destinée aux professionnels de l'état des lieux : gestion de contacts et d'agences clientes, missions, agenda, réservations en ligne, extranet client, envoi d'emails transactionnels, facturation.
+Lokentia est une application en ligne (SaaS) de gestion d'activité destinée aux professionnels de l'état des lieux : gestion de contacts et d'agences clientes, missions, agenda, réservations en ligne, extranet client, envoi d'emails transactionnels.
 
 **« Client »** : le professionnel (personne morale ou entrepreneur individuel agissant à des fins professionnelles) qui souscrit au Service. **« Utilisateurs finaux »** : les agences, propriétaires et locataires du Client qui interagissent avec le Service (extranet, formulaires de réservation, emails) sans être parties au présent contrat. **« Données Client »** : l'ensemble des données saisies ou importées par le Client dans le Service, y compris les données personnelles de ses Utilisateurs finaux.
 
@@ -32,8 +32,8 @@ Toute inscription ouvre une **période d'essai gratuite de 15 jours** donnant ac
 
 | Formule | Mensuel | Annuel | Principales limites |
 |---|---|---|---|
-| Gratuit | 0 € | — | 100 contacts, 20 missions, facturation PDF, dashboard et agenda, support email |
-| Starter | 15 € / mois | 144 € / an (soit 12 € / mois) | 500 contacts, 100 missions, emails et campagnes, synchronisation contacts, facturation avancée, support prioritaire |
+| Gratuit | 0 € | — | 100 contacts, 20 missions, tableau de bord et agenda, support email |
+| Starter | 15 € / mois | 144 € / an (soit 12 € / mois) | 500 contacts, 100 missions, emails et campagnes, synchronisation des contacts, support prioritaire |
 | Pro | 35 € / mois | 336 € / an (soit 28 € / mois) | Contacts et missions illimités, rédaction assistée par IA, statistiques avancées, support téléphonique |
 
 Les prix sont exprimés **toutes taxes comprises (TTC)**. L'Éditeur peut faire évoluer ses tarifs ; toute modification est notifiée au Client au moins 30 jours avant son application et ne s'applique qu'à la période de facturation suivante. Le Client libre de tout engagement peut résilier avant l'entrée en vigueur du nouveau tarif.
