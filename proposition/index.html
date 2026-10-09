@@ -245,6 +245,44 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
 .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 
 
+/* ET AUSSI */
+.also{margin-top:22px;border:1px dashed #C7D3DE;border-radius:var(--r-lg);padding:20px 24px;display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap}
+.also-t{font-family:var(--mono);font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--laiton);padding-top:4px;min-width:90px}
+.also ul{list-style:none;flex:1;display:grid;grid-template-columns:repeat(3,1fr);gap:12px 20px}
+.also li{display:flex;gap:9px;align-items:flex-start;font-size:14px;color:var(--text2)}
+.also svg{width:18px;height:18px;flex-shrink:0;margin-top:2px;stroke:var(--bleu);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* DÉMO RÉSERVATION */
+.try{position:absolute;top:-12px;right:20px;background:var(--laiton);color:var(--encre);font-size:11.5px;font-weight:700;padding:4px 12px;border-radius:999px;z-index:1}
+.demo .slots button{border:1px solid var(--border);border-radius:8px;text-align:center;padding:8px 0;font-size:12.5px;font-weight:500;background:#fff;cursor:pointer;color:var(--text);transition:border-color .15s,background .15s}
+.demo .slots button:hover:not(:disabled){border-color:var(--bleu)}
+.demo .slots button[aria-checked="true"]{background:var(--bleu);border-color:var(--bleu);color:#fff}
+.demo .slots button:disabled{color:#B5C0CA;text-decoration:line-through;cursor:not-allowed}
+.demo .fake-input{width:100%;display:block;font-family:inherit;background:#fff;color:var(--text)}
+.demo .fake-btn{width:100%;border:none;cursor:pointer;font-family:inherit;transition:opacity .15s}
+.demo .fake-btn:disabled{opacity:.45;cursor:not-allowed}
+.demo-ok{width:52px;height:52px;border-radius:50%;background:var(--vert-clair);display:flex;align-items:center;justify-content:center;margin:6px auto 12px}
+.demo-ok svg{width:26px;height:26px;stroke:var(--vert);fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.demo-recap{text-align:center;font-size:13px;color:var(--text2);margin:4px 0 14px}
+.demo-list{list-style:none;display:grid;gap:8px;margin-bottom:16px}
+.demo-list li{font-size:12.5px;background:var(--bg2);border-radius:8px;padding:8px 10px 8px 30px;position:relative}
+.demo-list li::before{content:"✓";position:absolute;left:11px;color:var(--vert);font-weight:700}
+.demo-reset{display:block;margin:0 auto;background:none;border:none;color:var(--bleu);font-size:13px;cursor:pointer;text-decoration:underline;font-family:inherit}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* BARRE CTA MOBILE */
+.mcta{display:none}
+@media(max-width:640px){
+  .mcta{display:flex;position:fixed;left:12px;right:12px;bottom:12px;z-index:80;align-items:center;justify-content:space-between;gap:12px;background:var(--encre);color:var(--papier);border-radius:14px;padding:10px 10px 10px 16px;box-shadow:0 14px 40px rgba(0,0,0,.35);transform:translateY(140%);transition:transform .25s}
+  .mcta.show{transform:none}
+  .mcta span{font-size:12px;color:#B9C6D2;line-height:1.3}
+  .mcta b{display:block;font-size:14px;color:var(--papier)}
+  .mcta .btn{padding:10px 18px;font-size:14px}
+  footer{padding-bottom:96px}
+}
+@media(max-width:980px){.also ul{grid-template-columns:1fr 1fr}}
+@media(max-width:640px){.also ul{grid-template-columns:1fr}}
+
 /* RESPONSIVE */
 @media(max-width:980px){
   .hero-grid{grid-template-columns:1fr;gap:48px}
@@ -533,7 +571,7 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
         <p>Structurez votre activité dès le premier jour, sans tableur ni bricolage.</p>
         <ul>
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Fichier agences & prospects</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Campagnes pour vous faire connaître</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Campagnes pour vous faire connaître (dès Starter)</li>
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Formule Gratuite pour commencer</li>
         </ul>
       </div>
@@ -613,6 +651,17 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
         <p>Confirmations, relances et campagnes, avec suivi des ouvertures (Brevo).</p>
       </div>
     </div>
+    <div class="also">
+      <p class="also-t">Et aussi</p>
+      <ul>
+        <li><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>Rappel automatique la veille du rendez-vous</li>
+        <li><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Demande d'avis Google après la mission</li>
+        <li><svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>Pipeline de prospection des agences</li>
+        <li><svg viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r="2.5"/><path d="M12 22a10 10 0 110-20c5.5 0 10 4 10 9a5 5 0 01-5 5h-1.8a2 2 0 00-1.5 3.3A1.4 1.4 0 0112 22z"/></svg>Page de réservation à vos couleurs</li>
+        <li><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>Double authentification</li>
+        <li><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>Sauvegarde quotidienne et export de vos données</li>
+      </ul>
+    </div>
   </div>
 </section>
 
@@ -654,18 +703,38 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
         <ul class="ticks">
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Moins d'appels</b> pour caler les rendez-vous</span></li>
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Extranet client</b> : chacun suit ses dossiers en autonomie</span></li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Confirmation automatique</b> par email</span></li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Confirmation par email</b> et rappel automatique la veille</span></li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>À vos couleurs</b> : la page reprend la couleur de votre marque</span></li>
         </ul>
       </div>
-      <div class="panel" aria-hidden="true">
-        <div class="panel-card">
-          <h4>Réserver un état des lieux</h4>
-          <div class="sub">Mardi 14 octobre — créneaux disponibles</div>
-          <div class="slots"><span class="off">08:30</span><span class="on">10:00</span><span>11:30</span><span>14:00</span><span class="off">15:30</span><span>17:00</span></div>
-          <div class="fake-input">Type : EDL sortant</div>
-          <div class="fake-input">Adresse du bien : 12 rue des Lilas, Arpajon</div>
-          <div class="fake-btn">Confirmer la réservation</div>
-        </div>
+      <div class="panel">
+        <span class="try">Essayez, c'est une démo</span>
+        <form class="panel-card demo" id="demo-booking" aria-label="Démonstration de la page de réservation">
+          <div id="demo-step1">
+            <h4>Réserver un état des lieux</h4>
+            <div class="sub">Mardi 14 octobre — choisissez un créneau</div>
+            <div class="slots" role="radiogroup" aria-label="Créneaux">
+              <button type="button" disabled>08:30</button><button type="button" role="radio" aria-checked="false">10:00</button><button type="button" role="radio" aria-checked="false">11:30</button>
+              <button type="button" role="radio" aria-checked="false">14:00</button><button type="button" disabled>15:30</button><button type="button" role="radio" aria-checked="false">17:00</button>
+            </div>
+            <label class="sr" for="demo-type">Type d'état des lieux</label>
+            <select id="demo-type" class="fake-input"><option>EDL entrant</option><option selected>EDL sortant</option><option>Pré-état des lieux</option></select>
+            <label class="sr" for="demo-adr">Adresse du bien</label>
+            <input id="demo-adr" class="fake-input" value="12 rue des Lilas, Arpajon">
+            <button type="submit" class="fake-btn" id="demo-go" disabled>Choisissez un créneau</button>
+          </div>
+          <div id="demo-step2" hidden>
+            <div class="demo-ok"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
+            <h4 style="text-align:center">Demande envoyée</h4>
+            <p class="demo-recap" id="demo-recap"></p>
+            <ul class="demo-list">
+              <li>La mission apparaît dans le Lokentia de l'expert</li>
+              <li>Le client reçoit sa confirmation par email</li>
+              <li>Un rappel part automatiquement la veille</li>
+            </ul>
+            <button type="button" class="demo-reset" id="demo-reset">Recommencer la démo</button>
+          </div>
+        </form>
       </div>
     </div>
 
@@ -911,6 +980,12 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
   </div>
 </footer>
 
+<!-- BARRE CTA MOBILE -->
+<div class="mcta" id="mcta" aria-hidden="true">
+  <span><b>15 jours gratuits</b>Sans carte bancaire</span>
+  <a href="https://app.lokentia.fr" class="btn btn-laiton" tabindex="-1">Essayer</a>
+</div>
+
 <!-- MODALE CONTACT -->
 <dialog id="dlg-contact" aria-labelledby="contact-title">
   <form class="dlg" id="contact-form" novalidate>
@@ -978,6 +1053,37 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
   });
   document.querySelectorAll('dialog').forEach(function(d){
     d.addEventListener('click', function(e){ if(e.target === d) d.close(); });
+  });
+
+  // Barre CTA mobile : visible après le hero, masquée sur le CTA final et le pied de page
+  var mcta = document.getElementById('mcta'), hero = document.querySelector('.hero'), fin = document.querySelector('.cta');
+  function majCta(){
+    var apresHero = hero.getBoundingClientRect().bottom < 0;
+    var surFin = fin.getBoundingClientRect().top < window.innerHeight;
+    var visible = apresHero && !surFin;
+    mcta.classList.toggle('show', visible);
+    mcta.setAttribute('aria-hidden', !visible);
+    mcta.querySelector('a').tabIndex = visible ? 0 : -1;
+  }
+  window.addEventListener('scroll', majCta, {passive:true}); majCta();
+
+  // Démo de réservation (aucun envoi réel)
+  var demo = document.getElementById('demo-booking'), go = document.getElementById('demo-go'), choix = '';
+  demo.querySelectorAll('.slots button[role="radio"]').forEach(function(b){
+    b.addEventListener('click', function(){
+      demo.querySelectorAll('.slots button[role="radio"]').forEach(function(x){ x.setAttribute('aria-checked', x === b); });
+      choix = b.textContent; go.disabled = false; go.textContent = 'Confirmer pour ' + choix;
+    });
+  });
+  demo.addEventListener('submit', function(e){
+    e.preventDefault(); if(!choix) return;
+    document.getElementById('demo-recap').textContent = document.getElementById('demo-type').value + ' · mardi 14 octobre à ' + choix + ' · ' + document.getElementById('demo-adr').value;
+    document.getElementById('demo-step1').hidden = true; document.getElementById('demo-step2').hidden = false;
+  });
+  document.getElementById('demo-reset').addEventListener('click', function(){
+    choix = ''; go.disabled = true; go.textContent = 'Choisissez un créneau';
+    demo.querySelectorAll('.slots button[role="radio"]').forEach(function(x){ x.setAttribute('aria-checked', 'false'); });
+    document.getElementById('demo-step1').hidden = false; document.getElementById('demo-step2').hidden = true;
   });
 
   // Formulaire de contact (même endpoint que la version en ligne)
