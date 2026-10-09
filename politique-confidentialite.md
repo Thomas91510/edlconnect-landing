@@ -31,8 +31,8 @@ Les données sont accessibles aux seules personnes habilitées de l'Éditeur et 
 
 | Prestataire | Rôle | Localisation des données |
 |---|---|---|
-| Supabase | Base de données, authentification, stockage de fichiers | Union européenne [région du projet à confirmer dans le tableau de bord Supabase] |
-| Vercel | Hébergement de l'application | UE/États-Unis — clauses contractuelles types |
+| Supabase | Base de données, authentification, stockage de fichiers | Union européenne (Suède — Stockholm) |
+| Vercel | Hébergement du site et de l'application, mesure d'audience du site (Vercel Web Analytics) | UE/États-Unis — clauses contractuelles types |
 | Brevo (Sendinblue SAS) | Envoi d'emails transactionnels | France / UE |
 | Stripe | Paiement des abonnements | UE/États-Unis — clauses contractuelles types |
 | IONOS / OVH | Domaines et emails de l'Éditeur | UE |
@@ -51,7 +51,9 @@ Vous disposez des droits d'accès, de rectification, d'effacement, de limitation
 
 ## 6. Cookies
 
-Le site et l'application utilisent uniquement des traceurs strictement nécessaires au fonctionnement (session de connexion, préférences). Aucun cookie publicitaire ni traceur tiers de mesure d'audience n'est déposé. [À ajuster si un outil d'analyse est ajouté ultérieurement — un bandeau de consentement deviendrait alors nécessaire.]
+Le site et l'application n'utilisent que des traceurs strictement nécessaires à leur fonctionnement (session de connexion, préférences). Aucun cookie publicitaire n'est déposé.
+
+Le site vitrine mesure sa fréquentation avec Vercel Web Analytics, **sans cookie** et sans identifiant persistant : les visites sont comptées de façon agrégée, à partir d'un identifiant technique non réversible renouvelé chaque jour, sans suivi d'un site à l'autre. Cette mesure sert uniquement à produire des statistiques anonymes de fréquentation du site (pages vues, provenance des visites) ; elle n'est pas croisée avec d'autres données.
 
 ## 7. Mise à jour
 

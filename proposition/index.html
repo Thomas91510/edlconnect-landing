@@ -242,13 +242,8 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
 .alert.ok{background:var(--vert-clair);color:#22673F}
 .alert.err{background:#FBEAEA;color:#992E2E}
 .alert.show{display:block}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
 
-/* COOKIES */
-.cookie{position:fixed;left:16px;right:16px;bottom:16px;z-index:90;max-width:520px;background:var(--encre);color:var(--papier);border-radius:14px;padding:18px 20px;box-shadow:0 20px 50px rgba(0,0,0,.3);display:none;gap:14px;align-items:center;flex-wrap:wrap;font-size:13px;line-height:1.55}
-.cookie.show{display:flex}
-.cookie p{flex:1;min-width:220px;color:#C9D4DE}
-.cookie a{color:var(--laiton);text-decoration:underline;cursor:pointer}
-.cookie .btn{padding:9px 16px;font-size:13px}
 
 /* RESPONSIVE */
 @media(max-width:980px){
@@ -837,7 +832,7 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
         <a href="https://app.lokentia.fr" class="btn btn-outline">Essayer 15 jours gratuits</a>
       </div>
     </div>
-    <p class="pricing-foot">Prix TTC. Changement de formule ou résiliation à tout moment.</p>
+    <p class="pricing-foot">Prix TTC. Changement de formule ou résiliation à tout moment. Voir les <a href="cgvu.html" style="color:inherit;text-decoration:underline">conditions générales</a>.</p>
   </div>
 </section>
 
@@ -906,8 +901,10 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
       </div>
       <div>
         <h4>Légal</h4>
-        <button type="button" class="link" data-open="dlg-legal">Mentions légales & CGU</button>
-        <button type="button" class="link" data-open="dlg-legal">Politique de confidentialité</button>
+        <a href="mentions-legales.html">Mentions légales</a>
+        <a href="cgvu.html">CGVU</a>
+        <a href="confidentialite.html">Confidentialité</a>
+        <a href="sous-traitance.html">Sous-traitance (RGPD)</a>
       </div>
     </div>
     <div class="foot-copy"><span>© 2026 Lokentia — ImmoCheck EDL</span><span>Fait en Essonne</span></div>
@@ -932,50 +929,13 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
         <option>Problème technique</option>
         <option>Autre</option>
       </select></div>
+    <div class="hp" aria-hidden="true"><label for="c-site">Ne pas remplir</label><input id="c-site" name="site" tabindex="-1" autocomplete="off"></div>
     <div class="field"><label for="c-msg">Message *</label><textarea id="c-msg" required placeholder="Votre message…"></textarea></div>
     <button type="submit" class="btn btn-primary" id="c-btn" style="width:100%">Envoyer le message</button>
-    <p style="font-size:12.5px;color:var(--text3);text-align:center;margin-top:12px">Ou écrivez-nous : <a href="mailto:contact@lokentia.fr" style="color:var(--bleu)">contact@lokentia.fr</a></p>
+    <p style="font-size:12px;color:var(--text3);margin-top:12px;line-height:1.5">Vos informations servent uniquement à vous répondre. <a href="confidentialite.html" style="color:var(--bleu)">Politique de confidentialité</a>.</p>
+    <p style="font-size:12.5px;color:var(--text3);text-align:center;margin-top:8px">Ou écrivez-nous : <a href="mailto:contact@lokentia.fr" style="color:var(--bleu)">contact@lokentia.fr</a></p>
   </form>
 </dialog>
-
-<!-- MODALE MENTIONS LÉGALES (contenu identique à la version en ligne) -->
-<dialog id="dlg-legal" aria-labelledby="legal-title">
-  <div class="dlg">
-    <button type="button" class="dlg-close" data-close aria-label="Fermer">✕</button>
-    <h2 id="legal-title">Mentions légales</h2>
-    <div class="legal">
-      <h3>Éditeur du site</h3>
-      <p>Lokentia est édité par ImmoCheck EDL, SASU au capital de 150 €, immatriculée au RCS d'Évry sous le numéro 994 114 163.<br>
-      Siège social : 24 Route de Cheptainville, 91630 Marolles-en-Hurepoix<br>
-      N° TVA intracommunautaire : FR95 994 114 163<br>
-      Représentée par Thomas Langlade, Président.<br>
-      Email : contact@lokentia.fr</p>
-      <h3>Hébergement</h3>
-      <p>Le site est hébergé par Vercel Inc., 340 Pine Street, Suite 701, San Francisco, CA 94104, États-Unis.</p>
-      <h3>Propriété intellectuelle</h3>
-      <p>L'ensemble du contenu de ce site (textes, images, logos) est protégé par le droit d'auteur. Toute reproduction est interdite sans autorisation préalable.</p>
-      <h3>Données personnelles (RGPD)</h3>
-      <p>Les données collectées lors de l'inscription (email, nom d'entreprise) sont utilisées uniquement pour la fourniture du service Lokentia. Elles ne sont jamais revendues à des tiers.<br><br>
-      Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour exercer ces droits : contact@lokentia.fr</p>
-      <h3>Cookies</h3>
-      <p>Ce site utilise uniquement des cookies essentiels au fonctionnement du service (authentification, préférences). Aucun cookie publicitaire n'est utilisé.</p>
-      <h3>Conditions Générales d'Utilisation</h3>
-      <p>L'accès et l'utilisation de Lokentia impliquent l'acceptation des présentes CGU.<br><br>
-      <strong>Abonnement :</strong> L'essai gratuit de 15 jours est sans engagement. À l'issue de la période d'essai, l'accès est suspendu jusqu'à souscription d'un abonnement payant.<br><br>
-      <strong>Résiliation :</strong> Vous pouvez résilier votre abonnement à tout moment. Aucun remboursement n'est effectué pour la période en cours.<br><br>
-      <strong>Responsabilité :</strong> Lokentia ne saurait être tenu responsable des pertes de données. Il est recommandé d'effectuer des sauvegardes régulières.<br><br>
-      <strong>Droit applicable :</strong> Les présentes CGU sont soumises au droit français. Tout litige relève de la compétence des tribunaux français.</p>
-    </div>
-    <button type="button" class="btn btn-primary" data-close style="margin-top:22px">Fermer</button>
-  </div>
-</dialog>
-
-<!-- COOKIES -->
-<div class="cookie" id="cookie" role="region" aria-label="Cookies">
-  <p>Nous n'utilisons que des cookies essentiels au fonctionnement du site. <a data-open="dlg-legal">En savoir plus</a></p>
-  <button type="button" class="btn btn-ghost" data-cookie="refused">Refuser</button>
-  <button type="button" class="btn btn-laiton" data-cookie="accepted">Accepter</button>
-</div>
 
 <script>
 (function(){
@@ -1020,19 +980,7 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
     d.addEventListener('click', function(e){ if(e.target === d) d.close(); });
   });
 
-  // Cookies
-  var cookie = document.getElementById('cookie');
-  function getChoice(){ try { return localStorage.getItem('edl_cookies'); } catch(e){ return null; } }
-  if(!getChoice()) setTimeout(function(){ cookie.classList.add('show'); }, 1200);
-  cookie.querySelectorAll('[data-cookie]').forEach(function(b){
-    b.addEventListener('click', function(){
-      try { localStorage.setItem('edl_cookies', b.dataset.cookie); } catch(e){}
-      cookie.classList.remove('show');
-    });
-  });
-
   // Formulaire de contact (même endpoint que la version en ligne)
-  function esc(s){ return s.replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
   var form = document.getElementById('contact-form'), ok = document.getElementById('c-ok'), err = document.getElementById('c-err'), btn = document.getElementById('c-btn');
   function showErr(msg){ err.textContent = msg; err.classList.add('show'); ok.classList.remove('show'); }
   form.addEventListener('submit', async function(e){
@@ -1045,26 +993,23 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showErr('Merci de saisir une adresse email valide.');
     btn.disabled = true; btn.textContent = 'Envoi en cours…';
     try {
-      var resp = await fetch('https://app.lokentia.fr/api/send-email', {
+      var resp = await fetch('https://app.lokentia.fr/api/contact-form', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({
-          sender: {name: 'Lokentia Contact', email: 'contact@lokentia.fr'},
-          to: [{email: 'contact@lokentia.fr', name: 'Thomas Langlade'}],
-          replyTo: {email: email, name: nom},
-          subject: '[Lokentia] Contact : ' + sujet + ' — ' + nom,
-          htmlContent: '<p><strong>Nom :</strong> ' + esc(nom) + '</p><p><strong>Email :</strong> ' + esc(email) + '</p><p><strong>Sujet :</strong> ' + esc(sujet) + '</p><hr><p>' + esc(msg).replace(/\n/g, '<br>') + '</p>',
-          textContent: 'Nom : ' + nom + '\nEmail : ' + email + '\nSujet : ' + sujet + '\n\nMessage :\n' + msg
-        })
+        body: JSON.stringify({nom: nom, email: email, sujet: sujet, message: msg, site: document.getElementById('c-site').value})
       });
+      if(resp.status === 429) throw new Error('Trop de messages envoyés depuis votre connexion. Réessayez dans une heure ou écrivez-nous à contact@lokentia.fr');
       if(!resp.ok) throw new Error();
       ok.classList.add('show'); err.classList.remove('show'); form.reset();
-    } catch(_) {
-      showErr("Erreur lors de l'envoi. Écrivez-nous directement à contact@lokentia.fr");
+    } catch(ex) {
+      showErr(ex && ex.message ? ex.message : "Erreur lors de l'envoi. Écrivez-nous directement à contact@lokentia.fr");
     }
     btn.disabled = false; btn.textContent = 'Envoyer le message';
   });
 })();
 </script>
+<!-- Vercel Web Analytics : sans cookie. Ne fonctionne qu'une fois Analytics activé dans le projet Vercel. -->
+<script>window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };</script>
+<script defer src="/_vercel/insights/script.js"></script>
 </body>
 </html>

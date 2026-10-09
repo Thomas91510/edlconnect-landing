@@ -32,7 +32,7 @@ Le Client autorise de manière générale le recours aux sous-traitants ultérie
 
 | Sous-traitant ultérieur | Prestation | Localisation / garanties |
 |---|---|---|
-| Supabase | Base de données, authentification, stockage | UE [région à confirmer] |
+| Supabase | Base de données, authentification, stockage | UE (Suède — Stockholm) |
 | Vercel | Hébergement applicatif | UE/USA — clauses contractuelles types |
 | Brevo | Envoi d'emails | France / UE |
 | Google | Synchronisation d'agenda (si activée) | UE/USA — clauses contractuelles types |
