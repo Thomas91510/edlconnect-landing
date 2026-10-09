@@ -8,7 +8,7 @@
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="alternate icon" href="/favicon.ico">
 <link rel="apple-touch-icon" href="/favicon-192.png">
-<meta name="description" content="Missions, agences, agenda, réservations en ligne, extranet client et facturation : Lokentia regroupe toute la gestion d'un expert en état des lieux. Essai gratuit 15 jours, sans carte bancaire.">
+<meta name="description" content="Missions, agences, agenda, réservations en ligne, extranet client et relances : Lokentia regroupe toute la gestion d'un expert en état des lieux. Essai gratuit 15 jours, sans carte bancaire.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
@@ -285,6 +285,141 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
   .lead{font-size:16.5px}
 }
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* CHIFFRES */
+.stats{background:var(--encre2);color:var(--papier);border-top:1px solid rgba(244,247,250,.06)}
+.stats-inner{display:grid;grid-template-columns:repeat(4,1fr);padding:34px 24px}
+.stat{text-align:center;padding:4px 12px;border-left:1px solid rgba(244,247,250,.1)}
+.stat:first-child{border-left:none}
+.stat b{display:block;font-family:var(--display);font-size:clamp(30px,3.6vw,42px);font-weight:700;letter-spacing:-1px;color:var(--laiton);line-height:1.1}
+.stat span{font-size:13.5px;color:#B9C6D2}
+
+/* POUR QUI */
+.who{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:52px}
+.who-card{border:1px solid var(--border);border-radius:var(--r-lg);padding:30px;background:#fff;position:relative;overflow:hidden}
+.who-card::before{content:"";position:absolute;top:0;left:0;right:0;height:4px;background:var(--laiton)}
+.who-card:nth-child(2)::before{background:var(--bleu)}
+.who-card:nth-child(3)::before{background:var(--encre)}
+.who-card h3{font-family:var(--display);font-size:21px;font-weight:700;margin-bottom:6px}
+.who-card .who-sub{font-size:13px;color:var(--text3);margin-bottom:14px;font-family:var(--mono);letter-spacing:.5px}
+.who-card p{font-size:14.5px;color:var(--text2);margin-bottom:14px}
+.who-card ul{list-style:none;display:grid;gap:8px}
+.who-card li{display:flex;gap:9px;font-size:14px}
+.who-card li svg{width:17px;height:17px;flex-shrink:0;margin-top:2px;stroke:var(--vert);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+
+/* ZOOMS FONCTIONNALITÉS */
+.zoom{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center;padding:56px 0;border-top:1px solid var(--border)}
+.zoom:first-of-type{border-top:none}
+.zoom.rev .zoom-txt{order:2}
+.zoom h3{font-family:var(--display);font-size:clamp(24px,3vw,32px);font-weight:700;letter-spacing:-.5px;line-height:1.15;margin-bottom:14px}
+.zoom-txt>p{font-size:16.5px;color:var(--text2);margin-bottom:20px}
+.ticks{list-style:none;display:grid;gap:11px}
+.ticks li{display:flex;gap:11px;font-size:15px}
+.ticks li svg{width:20px;height:20px;flex-shrink:0;stroke:var(--bleu);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;margin-top:1px}
+.ticks li span{color:var(--text2)}
+.ticks li b{color:var(--text);font-weight:600}
+.panel{background:var(--bg2);border:1px solid var(--border);border-radius:20px;padding:26px;position:relative}
+.panel-card{background:#fff;border:1px solid var(--border);border-radius:14px;padding:18px;box-shadow:0 14px 36px rgba(15,30,46,.07);font-size:13px}
+.panel-card h4{font-size:14px;margin-bottom:4px}
+.panel-card .sub{font-size:12px;color:var(--text3);margin-bottom:14px}
+/* agenda */
+.week{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.day{font-size:11px;color:var(--text3);text-align:center;margin-bottom:4px;font-weight:600}
+.slot{border-radius:7px;padding:6px 7px;font-size:10.5px;line-height:1.3;margin-bottom:6px}
+.slot b{display:block;font-size:10.5px}
+.s-in{background:var(--bleu-clair);color:var(--bleu-fonce)}
+.s-out{background:var(--laiton-clair);color:#7A5A20}
+.s-pre{background:var(--vert-clair);color:#22673F}
+.s-empty{border:1px dashed var(--border);height:38px}
+/* réservation */
+.slots{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:12px 0 16px}
+.slots span{border:1px solid var(--border);border-radius:8px;text-align:center;padding:8px 0;font-size:12.5px;font-weight:500}
+.slots span.on{background:var(--bleu);border-color:var(--bleu);color:#fff}
+.slots span.off{color:#B5C0CA;text-decoration:line-through}
+.fake-input{border:1px solid var(--border);border-radius:8px;padding:8px 11px;font-size:12.5px;color:var(--text3);margin-bottom:8px}
+.fake-btn{background:var(--bleu);color:#fff;border-radius:8px;text-align:center;padding:10px;font-weight:600;font-size:13px}
+/* emails */
+.mail-row{display:grid;grid-template-columns:1fr auto auto;gap:14px;align-items:center;padding:10px 0;border-top:1px solid var(--border);font-size:12.5px}
+.mail-row:first-of-type{border-top:none}
+.mail-row small{display:block;color:var(--text3);font-size:11px}
+.meter{width:70px;height:6px;background:var(--bg2);border-radius:99px;overflow:hidden}
+.meter i{display:block;height:100%;background:var(--bleu);border-radius:99px}
+.pct{font-weight:600;font-size:12px;min-width:34px;text-align:right}
+/* dashboard */
+.bars{display:flex;align-items:flex-end;gap:10px;height:120px;margin:10px 0 6px;padding-bottom:4px;border-bottom:1px solid var(--border)}
+.bars i{flex:1;background:var(--bleu-clair);border-radius:6px 6px 0 0}
+.bars i.hi{background:var(--bleu)}
+.bars-l{display:flex;gap:10px;font-size:10.5px;color:var(--text3)}
+.bars-l span{flex:1;text-align:center}
+.mini-kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.mini-kpis div{background:var(--bg2);border-radius:9px;padding:9px 10px}
+.mini-kpis b{display:block;font-family:var(--display);font-size:17px}
+.mini-kpis span{font-size:10.5px;color:var(--text3)}
+
+/* AVANT / APRÈS */
+.compare{max-width:900px;margin:48px auto 0;border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;background:#fff}
+.cmp-row{display:grid;grid-template-columns:1.1fr 1fr 1fr;border-top:1px solid var(--border);font-size:14.5px}
+.cmp-row:first-child{border-top:none;background:var(--encre);color:var(--papier);font-weight:600;font-size:14px}
+.cmp-row>div{padding:15px 20px}
+.cmp-row>div:nth-child(2){color:var(--text2);background:#FCFBF9}
+.cmp-row:first-child>div:nth-child(2){background:transparent;color:#B9C6D2}
+.cmp-row>div:nth-child(3){font-weight:500}
+.cmp-row:first-child>div:nth-child(3){color:var(--laiton)}
+.cmp-row b{font-weight:600}
+
+/* FONDATEUR (développé) */
+.founder-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start}
+.founder-side{position:sticky;top:100px}
+.portrait{aspect-ratio:4/5;border-radius:24px;background:var(--encre);position:relative;overflow:hidden;display:flex;align-items:flex-end;padding:28px}
+.portrait::before{content:"";position:absolute;top:-120px;right:-120px;width:340px;height:340px;border:3px solid rgba(194,154,91,.35);border-radius:50%}
+.portrait::after{content:"TL";position:absolute;top:50%;left:50%;transform:translate(-50%,-62%);font-family:var(--display);font-size:120px;font-weight:800;color:rgba(244,247,250,.08);letter-spacing:-4px}
+.portrait div{position:relative;z-index:1;color:var(--papier)}
+.portrait b{display:block;font-family:var(--display);font-size:24px}
+.portrait span{font-size:14px;color:#B9C6D2}
+.founder-facts{display:grid;gap:10px;margin-top:18px}
+.fact{display:flex;gap:12px;align-items:center;background:#fff;border:1px solid var(--border);border-radius:12px;padding:12px 14px;font-size:14px}
+.fact svg{width:20px;height:20px;flex-shrink:0;stroke:var(--laiton);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.letter .h2{margin-bottom:24px}
+.letter p{font-size:17px;color:var(--text2);line-height:1.8;margin-bottom:18px}
+.letter p b{color:var(--text);font-weight:600}
+.letter .pull{font-family:var(--display);font-size:clamp(21px,2.4vw,26px);font-weight:600;color:var(--text);line-height:1.35;letter-spacing:-.3px;border-left:3px solid var(--laiton);padding:4px 0 4px 22px;margin:28px 0}
+.promises{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:28px 0}
+.promise{background:#fff;border:1px solid var(--border);border-radius:14px;padding:16px}
+.promise b{display:block;font-size:15px;margin-bottom:4px}
+.promise span{font-size:13.5px;color:var(--text2);line-height:1.55;display:block}
+.sign{display:flex;align-items:center;gap:14px;margin-top:8px}
+.sign .sig{font-family:'Bricolage Grotesque',cursive;font-size:30px;font-weight:600;color:var(--bleu);transform:rotate(-3deg);letter-spacing:-.5px}
+.sign small{font-size:13.5px;color:var(--text3);line-height:1.4}
+
+/* SÉCURITÉ */
+.sec-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:48px}
+.sec{background:rgba(244,247,250,.04);border:1px solid rgba(244,247,250,.1);border-radius:var(--r-lg);padding:24px}
+.sec svg{width:26px;height:26px;stroke:var(--laiton);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;margin-bottom:14px}
+.sec h3{font-size:16px;margin-bottom:6px}
+.sec p{font-size:14px;color:#B9C6D2;line-height:1.6}
+
+@media(max-width:980px){
+  .stats-inner{grid-template-columns:1fr 1fr;row-gap:24px}
+  .stat:nth-child(3){border-left:none}
+  .who{grid-template-columns:1fr;max-width:560px;margin-left:auto;margin-right:auto}
+  .zoom{grid-template-columns:1fr;gap:32px;padding:44px 0}
+  .zoom.rev .zoom-txt{order:0}
+  .founder-grid{grid-template-columns:1fr;gap:36px}
+  .founder-side{position:static;max-width:420px}
+  .sec-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:640px){
+  .stats-inner{padding:26px 16px}
+  .promises{grid-template-columns:1fr}
+  .sec-grid{grid-template-columns:1fr}
+  .cmp-row{grid-template-columns:1fr 1fr;font-size:13.5px}
+  .cmp-row>div:first-child{grid-column:1/-1;padding-bottom:0;font-weight:600}
+  .cmp-row:first-child>div:first-child{display:none}
+  .cmp-row>div{padding:12px 16px}
+  .panel{padding:14px}
+  .week{gap:4px}
+  .slot{padding:5px;font-size:9.5px}
+}
 </style>
 </head>
 <body>
@@ -299,6 +434,7 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
     <div class="nav-links">
       <a href="#parcours">Comment ça marche</a>
       <a href="#fonctionnalites">Fonctionnalités</a>
+      <a href="#fondateur">Notre histoire</a>
       <a href="#tarifs">Tarifs</a>
       <a href="#faq">FAQ</a>
       <a href="https://app.lokentia.fr">Se connecter</a>
@@ -309,6 +445,7 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
   <div class="mobile-menu" id="mobile-menu">
     <a href="#parcours">Comment ça marche</a>
     <a href="#fonctionnalites">Fonctionnalités</a>
+    <a href="#fondateur">Notre histoire</a>
     <a href="#tarifs">Tarifs</a>
     <a href="#faq">FAQ</a>
     <a href="#" data-open="dlg-contact">Contact</a>
@@ -322,8 +459,8 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
   <div class="wrap hero-grid">
     <div>
       <div class="pill"><i></i>Pour les experts en état des lieux</div>
-      <h1>De la demande d'agence <em>à la facture</em>, sans rien oublier.</h1>
-      <p class="hero-sub">Lokentia réunit vos missions, vos agences, votre agenda et votre facturation dans un seul outil — conçu par un expert EDL, pour les experts EDL.</p>
+      <h1>Toutes vos missions d'état des lieux, <em>sans rien oublier.</em></h1>
+      <p class="hero-sub">Demandes d'agences, planning, réservations en ligne, relances : Lokentia organise toute votre activité dans un seul outil — conçu par un expert EDL, pour les experts EDL.</p>
       <div class="hero-ctas">
         <a href="https://app.lokentia.fr" class="btn btn-laiton">Démarrer l'essai gratuit
           <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
@@ -344,27 +481,27 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
           <div class="kpis">
             <div class="kpi"><b>14</b><span>Missions planifiées</span></div>
             <div class="kpi"><b>6</b><span>Agences actives</span></div>
-            <div class="kpi up"><b>3 120 €</b><span>CA du mois HT</span></div>
+            <div class="kpi up"><b>3</b><span>Nouvelles demandes</span></div>
           </div>
           <div class="mission"><div class="when"><b>13</b><span>lun.</span></div><div><div class="m-title">EDL entrant · T3 Évry-Courcouronnes</div><div class="m-meta">Agence du Centre · 09:30</div></div><span class="badge b-plan">Planifiée</span></div>
-          <div class="mission"><div class="when"><b>13</b><span>lun.</span></div><div><div class="m-title">EDL sortant · Studio Corbeil</div><div class="m-meta">Cabinet Morel Gestion · 14:00</div></div><span class="badge b-done">À facturer</span></div>
+          <div class="mission"><div class="when"><b>13</b><span>lun.</span></div><div><div class="m-title">EDL sortant · Studio Corbeil</div><div class="m-meta">Cabinet Morel Gestion · 14:00</div></div><span class="badge b-plan">Planifiée</span></div>
           <div class="mission"><div class="when"><b>14</b><span>mar.</span></div><div><div class="m-title">Pré-état des lieux · Maison Arpajon</div><div class="m-meta">Réservation en ligne · propriétaire</div></div><span class="badge b-new">Nouvelle</span></div>
-          <div class="mission"><div class="when"><b>10</b><span>ven.</span></div><div><div class="m-title">EDL sortant · T2 Massy</div><div class="m-meta">Immo Sud Essonne · facture n° 2026-118</div></div><span class="badge b-paid">Payée</span></div>
+          <div class="mission"><div class="when"><b>10</b><span>ven.</span></div><div><div class="m-title">EDL sortant · T2 Massy</div><div class="m-meta">Immo Sud Essonne · rapport envoyé</div></div><span class="badge b-paid">Réalisée</span></div>
         </div>
       </div>
       <div class="float f1"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div><b>Nouvelle réservation</b><span>Créneau mar. 14 · 10:00</span></div></div>
-      <div class="float f2"><div class="ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/></svg></div><div><b>Facture mensuelle prête</b><span>Agence du Centre · 9 missions</span></div></div>
+      <div class="float f2"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><b>Confirmation envoyée</b><span>Locataire · ouverte à 18:42</span></div></div>
     </div>
   </div>
 </header>
 
-<!-- CONFIANCE -->
-<section class="trust" aria-label="Engagements">
-  <div class="wrap trust-inner" style="padding-left:24px;padding-right:24px">
-    <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><div><b>Données isolées</b><span>Chaque compte a son espace privé</span></div></div>
-    <div class="trust-item"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg><div><b>Mobile & ordinateur</b><span>Rien à installer, tout dans le navigateur</span></div></div>
-    <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><div><b>Éditeur français</b><span>ImmoCheck EDL, Essonne (91)</span></div></div>
-    <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><div><b>Support humain</b><span>Réponse sous 24 h ouvrées</span></div></div>
+<!-- CHIFFRES -->
+<section class="stats" aria-label="Lokentia en chiffres">
+  <div class="wrap stats-inner">
+    <div class="stat"><b>500+</b><span>missions gérées</span></div>
+    <div class="stat"><b>2 h</b><span>gagnées par semaine</span></div>
+    <div class="stat"><b>5 min</b><span>pour être opérationnel</span></div>
+    <div class="stat"><b>100 %</b><span>des données isolées par compte</span></div>
   </div>
 </section>
 
@@ -374,14 +511,57 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
     <div>
       <p class="tag">Le quotidien sans Lokentia</p>
       <h2 class="h2">Votre métier, c'est le terrain. Pas l'administratif.</h2>
-      <p class="lead">Entre les demandes qui arrivent par téléphone, SMS et email, les créneaux à caler avec les locataires et les factures à préparer agence par agence, la gestion grignote vos soirées.</p>
+      <p class="lead">Entre les demandes qui arrivent par téléphone, SMS et email, les créneaux à caler avec les locataires et les agences à relancer, la gestion grignote vos soirées.</p>
     </div>
     <ul class="pain-list">
       <li><div class="x">✕</div><div><b>Des demandes éparpillées</b><span>Un appel ici, un mail là, un SMS du locataire… et une mission qui passe à la trappe.</span></div></li>
       <li><div class="x">✕</div><div><b>Un agenda qui ne parle pas à vos dossiers</b><span>Les rendez-vous sont d'un côté, les adresses et contacts de l'autre.</span></div></li>
-      <li><div class="x">✕</div><div><b>La facturation de fin de mois</b><span>Reprendre chaque mission dans un tableur pour refaire les factures de chaque agence.</span></div></li>
-      <li><div class="x">✕</div><div><b>Des agences à relancer à la main</b><span>Sans historique clair, difficile de savoir qui solliciter et quand.</span></div></li>
+      <li><div class="x">✕</div><div><b>Des allers-retours pour fixer un créneau</b><span>Trois appels et deux messages vocaux pour caler un seul rendez-vous avec un locataire.</span></div></li>
+      <li><div class="x">✕</div><div><b>Des agences à relancer à la main</b><span>Sans historique clair, difficile de savoir qui solliciter, et quand.</span></div></li>
     </ul>
+  </div>
+</section>
+
+<!-- POUR QUI -->
+<section class="section" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="center">
+      <p class="tag">Pour qui ?</p>
+      <h2 class="h2">Pensé pour chaque étape de votre activité.</h2>
+      <p class="lead">Que vous vous lanciez ou que vous travailliez déjà avec dix agences, Lokentia s'adapte à votre rythme.</p>
+    </div>
+    <div class="who">
+      <div class="who-card">
+        <div class="who-sub">VOUS DÉMARREZ</div>
+        <h3>Expert qui se lance</h3>
+        <p>Structurez votre activité dès le premier jour, sans tableur ni bricolage.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Fichier agences & prospects</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Campagnes pour vous faire connaître</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Formule Gratuite pour commencer</li>
+        </ul>
+      </div>
+      <div class="who-card">
+        <div class="who-sub">VOUS ÊTES INSTALLÉ</div>
+        <h3>Expert indépendant</h3>
+        <p>Absorbez plus de missions sans y passer vos soirées.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Planning clair, synchronisé Google Agenda</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Réservation en ligne par vos clients</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Historique complet par agence</li>
+        </ul>
+      </div>
+      <div class="who-card">
+        <div class="who-sub">VOUS ÊTES DÉBORDÉ</div>
+        <h3>Activité soutenue</h3>
+        <p>Gardez le contrôle quand les missions s'enchaînent.</p>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Contacts & missions illimités</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Rédaction assistée par IA</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Statistiques avancées</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -390,17 +570,17 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
   <div class="wrap">
     <p class="tag">Comment ça marche</p>
     <h2 class="h2">Une mission, quatre étapes,<br>un seul outil.</h2>
-    <p class="lead">Lokentia suit chaque état des lieux de la demande au paiement. Vous savez toujours où en est chaque dossier.</p>
+    <p class="lead">Lokentia suit chaque état des lieux de la demande jusqu'à la clôture. Vous savez toujours où en est chaque dossier.</p>
     <div class="flow">
       <div class="step"><div class="step-n"></div><h3>La demande arrive</h3><p>L'agence ou le propriétaire réserve directement en ligne, ou vous créez la mission en quelques secondes.</p></div>
       <div class="step"><div class="step-n"></div><h3>Vous planifiez</h3><p>La mission rejoint votre agenda, synchronisé avec Google Agenda. Le client reçoit sa confirmation par email.</p></div>
       <div class="step"><div class="step-n"></div><h3>Vous réalisez</h3><p>Sur place, toutes les infos du dossier sont sur votre téléphone : adresse, contacts, type de bien.</p></div>
-      <div class="step"><div class="step-n"></div><h3>Vous facturez</h3><p>Les missions réalisées sont regroupées par agence en une facture PDF mensuelle, TVA et IBAN inclus.</p></div>
+      <div class="step"><div class="step-n"></div><h3>Vous suivez</h3><p>La mission est clôturée, l'historique de l'agence mis à jour. Vous savez qui relancer et quand.</p></div>
     </div>
   </div>
 </section>
 
-<!-- FONCTIONNALITÉS -->
+<!-- FONCTIONNALITÉS : VUE D'ENSEMBLE -->
 <section class="section" id="fonctionnalites">
   <div class="wrap">
     <div class="center">
@@ -415,20 +595,11 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
         <p>Entrants, sortants, pré-états des lieux : suivez chaque mission avec son statut, son bien, ses intervenants et son historique.</p>
         <div class="chips"><span class="chip">Entrant</span><span class="chip">Sortant</span><span class="chip">Pré-EDL</span><span class="chip">Statuts</span></div>
       </div>
-      <div class="card c3">
-        <div class="ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-        <h3>Facturation mensuelle par agence</h3>
-        <p>Une facture PDF professionnelle en un clic, ou toutes les missions du mois regroupées par agence.</p>
-        <div class="invoice" aria-hidden="true">
-          <div class="inv-row"><span>6 × EDL entrant</span><span>690,00 €</span></div>
-          <div class="inv-row"><span>3 × EDL sortant</span><span>345,00 €</span></div>
-          <div class="inv-row total"><span>Agence du Centre — octobre</span><span>1 035,00 € HT</span></div>
-        </div>
-      </div>
-      <div class="card c2 dark">
+      <div class="card c3 dark">
         <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
-        <h3>Réservation en ligne & extranet</h3>
-        <p>Vos clients réservent un créneau et suivent leurs dossiers depuis leur propre espace.</p>
+        <h3>Réservation en ligne & extranet client</h3>
+        <p>Vos agences et propriétaires réservent un créneau et suivent leurs dossiers depuis leur propre espace, sans vous appeler.</p>
+        <div class="chips"><span class="chip">Créneaux</span><span class="chip">Espace client</span><span class="chip">Confirmations</span></div>
       </div>
       <div class="card c2">
         <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
@@ -440,30 +611,175 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
         <h3>Agences & contacts</h3>
         <p>Agences, propriétaires, locataires : un historique complet par contact.</p>
       </div>
-      <div class="card c3">
+      <div class="card c2">
         <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
         <h3>Emails & campagnes</h3>
-        <p>Envoyez confirmations, relances et campagnes vers vos agences depuis Lokentia, avec le suivi des ouvertures et des clics (intégration Brevo).</p>
-      </div>
-      <div class="card c3">
-        <div class="ic"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
-        <h3>Tableau de bord</h3>
-        <p>Chiffre d'affaires du mois, missions à facturer, agences les plus actives : votre activité d'un coup d'œil. Rédaction assistée par IA dans la formule Pro.</p>
+        <p>Confirmations, relances et campagnes, avec suivi des ouvertures (Brevo).</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FONDATEUR -->
-<section class="section founder">
+<!-- FONCTIONNALITÉS : ZOOMS -->
+<section class="section" style="padding-top:0">
   <div class="wrap">
-    <div class="founder-card">
-      <div class="founder-mark" aria-hidden="true"><span>TL</span></div>
-      <div>
-        <p class="tag">Pourquoi Lokentia</p>
-        <blockquote>« Je réalise moi-même des états des lieux en Île-de-France. Je n'ai pas trouvé d'outil adapté à notre métier, alors je l'ai construit. »</blockquote>
-        <cite><b>Thomas Langlade</b> — expert en état des lieux, fondateur de Lokentia</cite>
+
+    <div class="zoom">
+      <div class="zoom-txt">
+        <p class="tag">Planning</p>
+        <h3>Votre semaine d'un seul coup d'œil.</h3>
+        <p>Chaque mission apparaît dans votre agenda avec son type, son adresse et son client. Fini les rendez-vous notés sur trois supports différents.</p>
+        <ul class="ticks">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Vue semaine et mois</b> avec code couleur par type d'EDL</span></li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Synchronisation Google Agenda</b> : vos missions sur votre téléphone</span></li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Statuts en temps réel</b> : nouvelle, planifiée, réalisée</span></li>
+        </ul>
       </div>
+      <div class="panel" aria-hidden="true">
+        <div class="panel-card">
+          <h4>Semaine du 13 octobre</h4>
+          <div class="sub">9 missions · 2 créneaux libres</div>
+          <div class="week">
+            <div><div class="day">LUN</div><div class="slot s-in"><b>09:30</b>Entrant T3</div><div class="slot s-out"><b>14:00</b>Sortant studio</div></div>
+            <div><div class="day">MAR</div><div class="slot s-pre"><b>10:00</b>Pré-EDL</div><div class="slot s-in"><b>15:30</b>Entrant T2</div></div>
+            <div><div class="day">MER</div><div class="slot s-out"><b>09:00</b>Sortant T4</div><div class="slot s-empty"></div></div>
+            <div><div class="day">JEU</div><div class="slot s-in"><b>11:00</b>Entrant maison</div><div class="slot s-out"><b>16:00</b>Sortant T2</div></div>
+            <div><div class="day">VEN</div><div class="slot s-out"><b>10:30</b>Sortant T1</div><div class="slot s-empty"></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="zoom rev">
+      <div class="zoom-txt">
+        <p class="tag">Réservation en ligne</p>
+        <h3>Vos clients réservent, vous validez.</h3>
+        <p>Partagez votre lien de réservation : agences et propriétaires choisissent un créneau disponible et décrivent le bien. La demande arrive directement dans Lokentia.</p>
+        <ul class="ticks">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Moins d'appels</b> pour caler les rendez-vous</span></li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Extranet client</b> : chacun suit ses dossiers en autonomie</span></li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Confirmation automatique</b> par email</span></li>
+        </ul>
+      </div>
+      <div class="panel" aria-hidden="true">
+        <div class="panel-card">
+          <h4>Réserver un état des lieux</h4>
+          <div class="sub">Mardi 14 octobre — créneaux disponibles</div>
+          <div class="slots"><span class="off">08:30</span><span class="on">10:00</span><span>11:30</span><span>14:00</span><span class="off">15:30</span><span>17:00</span></div>
+          <div class="fake-input">Type : EDL sortant</div>
+          <div class="fake-input">Adresse du bien : 12 rue des Lilas, Arpajon</div>
+          <div class="fake-btn">Confirmer la réservation</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="zoom">
+      <div class="zoom-txt">
+        <p class="tag">Emails & relances</p>
+        <h3>Relancez au bon moment, les bonnes agences.</h3>
+        <p>Envoyez vos emails directement depuis Lokentia et voyez qui les a ouverts. Idéal pour entretenir votre réseau d'agences et en démarcher de nouvelles.</p>
+        <ul class="ticks">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Campagnes</b> vers vos agences et prospects</span></li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Suivi des ouvertures et des clics</b> en temps réel</span></li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Rédaction assistée par IA</b> dans la formule Pro</span></li>
+        </ul>
+      </div>
+      <div class="panel" aria-hidden="true">
+        <div class="panel-card">
+          <h4>Campagne « Disponibilités de novembre »</h4>
+          <div class="sub">Envoyée à 32 agences · taux d'ouverture</div>
+          <div class="mail-row"><div>Agence du Centre<small>Ouvert 3 fois · lien cliqué</small></div><div class="meter"><i style="width:100%"></i></div><div class="pct">✓</div></div>
+          <div class="mail-row"><div>Immo Sud Essonne<small>Ouvert hier à 18:42</small></div><div class="meter"><i style="width:100%"></i></div><div class="pct">✓</div></div>
+          <div class="mail-row"><div>Cabinet Morel Gestion<small>Non ouvert · à relancer</small></div><div class="meter"><i style="width:0"></i></div><div class="pct" style="color:var(--ambre)">!</div></div>
+          <div class="mail-row"><div><b>Total campagne</b><small>12 ouvertures sur 32</small></div><div class="meter"><i style="width:38%"></i></div><div class="pct">38 %</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="zoom rev">
+      <div class="zoom-txt">
+        <p class="tag">Tableau de bord</p>
+        <h3>Pilotez votre activité, pas seulement votre agenda.</h3>
+        <p>Combien de missions ce mois-ci ? Quelles agences vous sollicitent le plus ? Lesquelles n'ont rien envoyé depuis longtemps ? Les réponses sont sur votre tableau de bord.</p>
+        <ul class="ticks">
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Volume de missions</b> mois par mois</span></li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Classement des agences</b> les plus actives</span></li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Statistiques avancées</b> dans la formule Pro</span></li>
+        </ul>
+      </div>
+      <div class="panel" aria-hidden="true">
+        <div class="panel-card">
+          <h4>Missions réalisées</h4>
+          <div class="sub">6 derniers mois</div>
+          <div class="bars"><i style="height:45%"></i><i style="height:58%"></i><i style="height:52%"></i><i style="height:70%"></i><i style="height:66%"></i><i class="hi" style="height:88%"></i></div>
+          <div class="bars-l"><span>mai</span><span>juin</span><span>juil.</span><span>août</span><span>sept.</span><span>oct.</span></div>
+          <div class="mini-kpis"><div><b>41</b><span>Missions en oct.</span></div><div><b>6</b><span>Agences actives</span></div><div><b>38 %</b><span>Ouverture emails</span></div></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- AVANT / APRÈS -->
+<section class="section" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="center">
+      <p class="tag">Avant / après</p>
+      <h2 class="h2">Ce qui change dès la première semaine.</h2>
+    </div>
+    <div class="compare">
+      <div class="cmp-row"><div></div><div>Sans Lokentia</div><div>Avec Lokentia</div></div>
+      <div class="cmp-row"><div><b>Recevoir une demande</b></div><div>Téléphone, SMS, email, post-it</div><div>Une liste unique de missions</div></div>
+      <div class="cmp-row"><div><b>Fixer un rendez-vous</b></div><div>Plusieurs appels et messages</div><div>Le client réserve en ligne</div></div>
+      <div class="cmp-row"><div><b>Retrouver un dossier</b></div><div>Fouiller mails et tableurs</div><div>Fiche mission avec tout l'historique</div></div>
+      <div class="cmp-row"><div><b>Relancer les agences</b></div><div>À l'instinct, quand on y pense</div><div>Campagnes et suivi des ouvertures</div></div>
+      <div class="cmp-row"><div><b>Suivre son activité</b></div><div>Compter à la main en fin de mois</div><div>Tableau de bord à jour en continu</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- FONDATEUR -->
+<section class="section" id="fondateur">
+  <div class="wrap founder-grid">
+    <div class="founder-side">
+      <div class="portrait"><div><b>Thomas Langlade</b><span>Expert en état des lieux · Fondateur</span></div></div>
+      <div class="founder-facts">
+        <div class="fact"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Expert EDL de terrain en Île-de-France</div>
+        <div class="fact"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>Basé à Marolles-en-Hurepoix (91)</div>
+        <div class="fact"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg>Joignable directement : contact@lokentia.fr</div>
+      </div>
+    </div>
+    <div class="letter">
+      <p class="tag">Le mot du fondateur</p>
+      <h2 class="h2">« J'ai construit l'outil dont j'avais besoin. »</h2>
+      <p>Je m'appelle Thomas Langlade. Je suis <b>expert en état des lieux en Île-de-France</b>, et comme vous, mes journées se passent sur le terrain : un entrant à Évry le matin, un sortant à Corbeil l'après-midi, un pré-état des lieux calé entre les deux.</p>
+      <p>Le terrain, j'aime ça. Ce qui me pesait, c'était tout le reste. Les demandes arrivaient de partout : l'appel d'une agence entre deux visites, le mail d'un gestionnaire, le SMS d'un locataire qui veut décaler son rendez-vous. Le soir, je recopiais tout dans un tableur, je vérifiais que rien n'avait été oublié… et parfois, quelque chose l'avait été.</p>
+      <p>J'ai essayé les agendas partagés, les tableurs améliorés, les CRM « tout-en-un ». Aucun ne parlait notre langue. Ils ne savaient pas ce qu'est un EDL sortant ou un pré-état des lieux, ni qu'une même agence peut vous confier vingt missions dans le mois et ne plus donner de nouvelles le mois suivant.</p>
+      <div class="pull">Lokentia est né de ce constat : un outil fait par un expert EDL, qui comprend votre métier dès la première minute.</div>
+      <p>Je l'ai d'abord conçu pour mon propre usage. Chaque fonctionnalité répond à un problème que j'ai vécu : la réservation en ligne pour arrêter de jouer au ping-pong téléphonique, l'historique par agence pour savoir qui relancer, l'agenda synchronisé pour avoir mes missions dans la poche.</p>
+      <div class="promises">
+        <div class="promise"><b>Simple</b><span>Opérationnel en quelques minutes, sans formation.</span></div>
+        <div class="promise"><b>Honnête</b><span>Des prix clairs, sans engagement ni frais cachés.</span></div>
+        <div class="promise"><b>À l'écoute</b><span>Vos retours guident les prochaines évolutions.</span></div>
+      </div>
+      <p>Lokentia évolue chaque semaine, et vous pouvez peser sur la suite : si quelque chose vous manque, écrivez-moi. C'est souvent moi qui vous répondrai.</p>
+      <div class="sign"><span class="sig">Thomas Langlade</span><small>Fondateur de Lokentia<br>ImmoCheck EDL</small></div>
+    </div>
+  </div>
+</section>
+
+<!-- SÉCURITÉ -->
+<section class="section flow-section">
+  <div class="wrap">
+    <p class="tag">Sécurité & confidentialité</p>
+    <h2 class="h2">Vos données et celles de vos clients sont protégées.</h2>
+    <p class="lead">Vous manipulez des informations sur des locataires et des propriétaires. Nous les traitons avec le sérieux qu'elles méritent.</p>
+    <div class="sec-grid">
+      <div class="sec"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><h3>Espace isolé</h3><p>Chaque compte dispose de son propre espace privé, strictement séparé des autres.</p></div>
+      <div class="sec"><svg viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg><h3>Connexion sans mot de passe</h3><p>Connexion par lien sécurisé envoyé par email : pas de mot de passe à retenir ou à se faire voler.</p></div>
+      <div class="sec"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/></svg><h3>Conforme RGPD</h3><p>Un accord de sous-traitance encadre le traitement des données de vos clients.</p></div>
+      <div class="sec"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg><h3>Jamais revendues</h3><p>Vos données servent uniquement à faire fonctionner le service. Aucune revente, aucune publicité.</p></div>
     </div>
   </div>
 </section>
@@ -474,7 +790,7 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
     <p class="tag">Tarifs</p>
     <h2 class="h2">Des prix clairs, sans surprise.</h2>
     <p class="lead">15 jours d'essai complet sur toutes les fonctionnalités, puis choisissez la formule qui vous convient.</p>
-    <div class="toggle" role="group" aria-label="Période de facturation">
+    <div class="toggle" role="group" aria-label="Période d'abonnement">
       <button type="button" id="t-month" aria-pressed="true">Mensuel</button>
       <button type="button" id="t-year" aria-pressed="false">Annuel</button>
     </div>
@@ -487,7 +803,6 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
         <ul>
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>100 contacts</li>
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>20 missions</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Facturation PDF</li>
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Tableau de bord & agenda</li>
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Support email</li>
         </ul>
@@ -497,13 +812,12 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
         <span class="ribbon">Le plus choisi</span>
         <h3>Starter</h3>
         <div class="price" data-m="15" data-y="12">15 €<small> /mois</small></div>
-        <div class="price-note" data-m="Sans engagement" data-y="144 € facturés par an">Sans engagement</div>
+        <div class="price-note" data-m="Sans engagement" data-y="144 € par an">Sans engagement</div>
         <ul>
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>500 contacts</li>
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>100 missions</li>
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Emails & campagnes</li>
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Synchronisation des contacts</li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Facturation avancée</li>
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Support prioritaire</li>
         </ul>
         <a href="https://app.lokentia.fr" class="btn btn-primary">Essayer 15 jours gratuits</a>
@@ -511,7 +825,7 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
       <div class="plan">
         <h3>Pro</h3>
         <div class="price" data-m="35" data-y="28">35 €<small> /mois</small></div>
-        <div class="price-note" data-m="Sans engagement" data-y="336 € facturés par an">Sans engagement</div>
+        <div class="price-note" data-m="Sans engagement" data-y="336 € par an">Sans engagement</div>
         <ul>
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Contacts & missions illimités</li>
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Tout Starter inclus</li>
@@ -535,10 +849,13 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
     </div>
     <div class="faq">
       <details open><summary>Que se passe-t-il à la fin des 15 jours d'essai ?</summary><p>Vous choisissez une formule payante, ou vous basculez sur la formule Gratuite. Vos données sont conservées dans tous les cas. Aucune carte bancaire n'est demandée pendant l'essai, donc aucun prélèvement surprise.</p></details>
+      <details><summary>Combien de temps faut-il pour prendre en main Lokentia ?</summary><p>Quelques minutes. Vous créez votre compte, ajoutez vos premières agences et planifiez votre première mission. Aucune installation ni formation n'est nécessaire.</p></details>
+      <details><summary>Lokentia remplace-t-il mon logiciel de saisie d'état des lieux ?</summary><p>Non : Lokentia gère tout ce qui entoure la mission (demandes, planning, clients, relances). Vous continuez à utiliser votre outil de saisie habituel sur le terrain.</p></details>
+      <details><summary>Puis-je importer mes agences et contacts existants ?</summary><p>Oui. Vous pouvez saisir vos contacts dans Lokentia ou les importer depuis Brevo si vous l'utilisez déjà. Besoin d'aide pour un import plus important ? Écrivez-nous.</p></details>
+      <details><summary>Comment fonctionne la réservation en ligne ?</summary><p>Vous partagez un lien avec vos agences et propriétaires. Ils choisissent un créneau disponible, décrivent le bien, et la demande arrive directement dans vos missions.</p></details>
       <details><summary>Mes données sont-elles sécurisées ?</summary><p>Vos données sont hébergées sur une infrastructure sécurisée (Supabase) et strictement isolées de celles des autres utilisateurs. Vous restez responsable des données de vos clients ; Lokentia les traite pour votre compte dans le cadre d'un accord de sous-traitance conforme au RGPD.</p></details>
-      <details><summary>Lokentia remplace-t-il mon logiciel de saisie d'état des lieux ?</summary><p>Non : Lokentia gère tout ce qui entoure la mission (demandes, planning, clients, facturation, relances). Vous continuez à utiliser votre outil de saisie habituel sur le terrain.</p></details>
       <details><summary>Est-ce que ça fonctionne sur téléphone ?</summary><p>Oui. Lokentia fonctionne dans le navigateur de votre smartphone, de votre tablette ou de votre ordinateur, sans rien installer.</p></details>
-      <details><summary>Puis-je changer de formule à tout moment ?</summary><p>Oui, sans frais et sans engagement minimum. Le changement s'applique immédiatement.</p></details>
+      <details><summary>Puis-je changer de formule ou résilier à tout moment ?</summary><p>Oui, sans frais et sans engagement minimum.</p></details>
       <details><summary>Comment fonctionne l'intégration Brevo ?</summary><p>En renseignant votre clé API Brevo dans les paramètres, Lokentia importe vos contacts et récupère les statistiques d'ouverture et de clics de vos emails.</p></details>
     </div>
   </div>
@@ -548,7 +865,7 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
 <section class="section cta">
   <div class="wrap">
     <h2 class="h2">Reprenez la main sur votre gestion dès cette semaine.</h2>
-    <p class="lead">Créez votre compte en deux minutes, importez vos agences et planifiez votre prochaine mission.</p>
+    <p class="lead">Créez votre compte en deux minutes, ajoutez vos agences et planifiez votre prochaine mission.</p>
     <div class="hero-ctas">
       <a href="https://app.lokentia.fr" class="btn btn-laiton">Démarrer l'essai gratuit <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
       <button type="button" class="btn btn-ghost" data-open="dlg-contact" data-subject="Demande de démo">Demander une démo</button>
@@ -580,7 +897,8 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
         <a href="https://app.lokentia.fr">Se connecter</a>
       </div>
       <div>
-        <h4>Aide</h4>
+        <h4>Lokentia</h4>
+        <a href="#fondateur">Notre histoire</a>
         <a href="#faq">FAQ</a>
         <button type="button" class="link" data-open="dlg-contact">Nous contacter</button>
         <a href="mailto:contact@lokentia.fr">contact@lokentia.fr</a>
