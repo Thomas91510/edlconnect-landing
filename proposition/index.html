@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lokentia — Le logiciel de gestion des experts en état des lieux</title>
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+<link rel="alternate icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/favicon-192.png">
+<meta name="description" content="Missions, agences, agenda, réservations en ligne, extranet client et facturation : Lokentia regroupe toute la gestion d'un expert en état des lieux. Essai gratuit 15 jours, sans carte bancaire.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --encre:#0F1E2E;--encre2:#16293D;--bleu:#1A5FA8;--bleu-fonce:#164F8C;--bleu-clair:#EAF1F8;
+  --laiton:#C29A5B;--laiton-clair:#F6EEDF;--papier:#F4F7FA;
+  --vert:#2F8F5B;--vert-clair:#E7F4EC;--ambre:#9A6410;--ambre-clair:#FBF0DC;
+  --text:#0F1E2E;--text2:#4F5E6D;--text3:#7D8B98;
+  --border:#E3E9EF;--bg:#fff;--bg2:#F4F7FA;
+  --r:10px;--r-lg:18px;
+  --display:'Bricolage Grotesque',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Inter',system-ui,sans-serif;font-size:16px;color:var(--text);background:var(--bg);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+img,svg{display:block}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--bleu);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1140px;margin:0 auto;padding:0 24px}
+.tag{font-family:var(--mono);font-size:12px;font-weight:500;color:var(--laiton);text-transform:uppercase;letter-spacing:2px;margin-bottom:14px}
+.h2{font-family:var(--display);font-size:clamp(28px,4vw,44px);font-weight:700;letter-spacing:-.8px;line-height:1.1;margin-bottom:16px}
+.lead{font-size:18px;color:var(--text2);max-width:600px;line-height:1.65}
+.center{text-align:center}.center .lead{margin:0 auto}
+
+/* BOUTONS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border-radius:var(--r);font-size:15px;font-weight:600;border:1.5px solid transparent;cursor:pointer;transition:background .15s,transform .15s,box-shadow .15s,border-color .15s}
+.btn svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.btn-primary{background:var(--bleu);color:#fff;border-color:var(--bleu)}
+.btn-primary:hover{background:var(--bleu-fonce);transform:translateY(-1px);box-shadow:0 6px 20px rgba(26,95,168,.35)}
+.btn-laiton{background:var(--laiton);color:var(--encre);border-color:var(--laiton)}
+.btn-laiton:hover{background:#D1AB6E;transform:translateY(-1px);box-shadow:0 6px 20px rgba(194,154,91,.35)}
+.btn-ghost{background:transparent;color:var(--papier);border-color:rgba(244,247,250,.35)}
+.btn-ghost:hover{border-color:var(--papier);background:rgba(244,247,250,.06)}
+.btn-outline{background:#fff;color:var(--bleu);border-color:var(--bleu)}
+.btn-outline:hover{background:var(--bleu-clair)}
+
+/* NAV */
+nav{position:fixed;inset:0 0 auto 0;z-index:100;transition:background .2s,border-color .2s,box-shadow .2s;border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(15,30,46,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom-color:rgba(244,247,250,.08)}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+.logo{display:flex;align-items:center;gap:10px}
+.logo svg{width:34px;height:34px}
+.logo span{font-family:var(--display);font-size:21px;font-weight:700;letter-spacing:-.5px;color:var(--papier)}
+.nav-links{display:flex;align-items:center;gap:26px}
+.nav-links a{font-size:14px;color:#B9C6D2;transition:color .15s}
+.nav-links a:hover{color:#fff}
+.nav-links .btn{padding:9px 18px;font-size:14px;color:var(--encre)}
+.burger{display:none;background:none;border:none;padding:10px;cursor:pointer}
+.burger span{display:block;width:22px;height:2px;background:var(--papier);border-radius:2px;margin:5px 0;transition:transform .25s,opacity .25s}
+.burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+.mobile-menu{display:none;background:var(--encre);border-top:1px solid rgba(244,247,250,.08);padding:8px 24px 20px}
+.mobile-menu.open{display:block}
+.mobile-menu a{display:block;padding:13px 0;color:#C9D4DE;font-size:15px;border-bottom:1px solid rgba(244,247,250,.08)}
+.mobile-menu .btn{margin-top:14px;width:100%;color:var(--encre);border-bottom:none}
+
+/* HERO */
+.hero{position:relative;overflow:hidden;background:var(--encre);color:var(--papier);padding:132px 0 0}
+.hero::before{content:"";position:absolute;top:-340px;right:-300px;width:760px;height:760px;border:3px solid rgba(194,154,91,.22);border-radius:50%;pointer-events:none}
+.hero::after{content:"";position:absolute;inset:auto 0 0 0;height:140px;background:linear-gradient(transparent,rgba(9,19,30,.6));pointer-events:none}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.02fr 1fr;gap:56px;align-items:center;padding-bottom:88px}
+.pill{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;letter-spacing:1.5px;text-transform:uppercase;color:var(--laiton);border:1px solid rgba(194,154,91,.35);border-radius:999px;padding:6px 14px;margin-bottom:24px}
+.pill i{width:7px;height:7px;border-radius:50%;background:var(--laiton);box-shadow:0 0 0 4px rgba(194,154,91,.18)}
+.hero h1{font-family:var(--display);font-size:clamp(36px,5.4vw,64px);font-weight:800;line-height:1.04;letter-spacing:-1.6px;margin-bottom:22px}
+.hero h1 em{font-style:normal;color:var(--laiton)}
+.hero-sub{font-size:19px;color:#B9C6D2;line-height:1.65;max-width:520px;margin-bottom:34px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero-proof{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:22px;font-size:13px;color:#8FA1B3}
+.hero-proof span{display:inline-flex;align-items:center;gap:7px}
+.hero-proof svg{width:15px;height:15px;stroke:var(--laiton);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+
+/* Maquette produit hero */
+.app{background:#fff;color:var(--text);border-radius:16px;box-shadow:0 40px 90px rgba(0,0,0,.45),0 0 0 1px rgba(255,255,255,.06);overflow:hidden;font-size:12px}
+.app-bar{display:flex;align-items:center;gap:6px;padding:10px 14px;background:#F1F4F7;border-bottom:1px solid var(--border)}
+.app-bar i{width:9px;height:9px;border-radius:50%;background:#D5DCE3}
+.app-url{flex:1;margin-left:10px;background:#fff;border:1px solid var(--border);border-radius:6px;padding:3px 10px;font-size:10px;color:var(--text3);font-family:var(--mono)}
+.app-body{padding:16px}
+.app-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:12px}
+.app-head b{font-family:var(--display);font-size:15px}
+.app-head small{font-size:10px;color:var(--text3)}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:12px}
+.kpi{border:1px solid var(--border);border-radius:8px;padding:9px 10px}
+.kpi b{display:block;font-family:var(--display);font-size:17px}
+.kpi span{font-size:10px;color:var(--text3)}
+.kpi.up b{color:var(--vert)}
+.mission{display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:center;padding:9px 0;border-top:1px solid var(--border)}
+.when{text-align:center;background:var(--bg2);border-radius:7px;padding:4px 0;line-height:1.15}
+.when b{display:block;font-family:var(--display);font-size:15px}
+.when span{font-size:9px;color:var(--text3);text-transform:uppercase}
+.m-title{font-weight:600;font-size:12px}
+.m-meta{font-size:10px;color:var(--text3)}
+.badge{font-size:10px;font-weight:600;padding:3px 8px;border-radius:999px;white-space:nowrap}
+.b-plan{background:var(--bleu-clair);color:var(--bleu)}
+.b-done{background:var(--ambre-clair);color:var(--ambre)}
+.b-paid{background:var(--vert-clair);color:var(--vert)}
+.b-new{background:var(--laiton-clair);color:#8A6524}
+.app-wrap{position:relative}
+.float{position:absolute;background:#fff;color:var(--text);border-radius:12px;box-shadow:0 18px 40px rgba(0,0,0,.28);padding:11px 14px;display:flex;gap:10px;align-items:center;font-size:12px}
+.float .ic{width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.float .ic svg{width:16px;height:16px;fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.float b{display:block;font-size:12px}
+.float span{font-size:10.5px;color:var(--text3)}
+.f1{left:-34px;bottom:46px}
+.f1 .ic{background:var(--laiton-clair)}.f1 .ic svg{stroke:#8A6524}
+.f2{right:-22px;top:62px}
+.f2 .ic{background:var(--vert-clair)}.f2 .ic svg{stroke:var(--vert)}
+
+/* BANDEAU CONFIANCE */
+.trust{background:var(--bg2);border-bottom:1px solid var(--border)}
+.trust-inner{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding:30px 24px}
+.trust-item{display:flex;gap:12px;align-items:flex-start}
+.trust-item svg{width:22px;height:22px;flex-shrink:0;stroke:var(--bleu);fill:none;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
+.trust-item b{display:block;font-size:14px}
+.trust-item span{font-size:13px;color:var(--text2)}
+
+/* PROBLÈME */
+.section{padding:100px 0}
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.pain-list{list-style:none;display:grid;gap:12px}
+.pain-list li{display:flex;gap:14px;align-items:flex-start;background:#fff;border:1px solid var(--border);border-radius:12px;padding:16px 18px}
+.pain-list .x{width:26px;height:26px;border-radius:50%;background:#FBEAEA;color:#A33;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+.pain-list b{display:block;font-size:15px}
+.pain-list span{font-size:14px;color:var(--text2)}
+
+/* PARCOURS */
+.flow-section{background:var(--encre);color:var(--papier);position:relative;overflow:hidden}
+.flow-section::after{content:"";position:absolute;bottom:-380px;left:-320px;width:700px;height:700px;border:3px solid rgba(194,154,91,.16);border-radius:50%;pointer-events:none}
+.flow-section .lead{color:#B9C6D2}
+.flow{position:relative;z-index:1;display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:56px;counter-reset:step}
+.flow::before{content:"";position:absolute;top:27px;left:12%;right:12%;height:2px;background:linear-gradient(90deg,var(--laiton),rgba(194,154,91,.25))}
+.step{position:relative;counter-increment:step}
+.step-n{width:56px;height:56px;border-radius:50%;background:var(--encre);border:2px solid var(--laiton);display:flex;align-items:center;justify-content:center;font-family:var(--display);font-weight:700;font-size:20px;color:var(--laiton);margin-bottom:20px;position:relative}
+.step-n::before{content:counter(step,decimal-leading-zero)}
+.step h3{font-family:var(--display);font-size:20px;font-weight:700;margin-bottom:8px}
+.step p{font-size:14.5px;color:#B9C6D2;line-height:1.65}
+
+/* FONCTIONNALITÉS */
+.bento{display:grid;grid-template-columns:repeat(6,1fr);gap:18px;margin-top:52px}
+.card{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);padding:28px;transition:border-color .2s,box-shadow .2s,transform .2s}
+.card:hover{border-color:#C7D8E8;box-shadow:0 10px 30px rgba(15,30,46,.07);transform:translateY(-2px)}
+.c3{grid-column:span 3}.c2{grid-column:span 2}
+.card .ic{width:44px;height:44px;border-radius:11px;background:var(--bleu-clair);display:flex;align-items:center;justify-content:center;margin-bottom:16px}
+.card .ic svg{width:22px;height:22px;stroke:var(--bleu);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:17px;font-weight:600;margin-bottom:8px}
+.card p{font-size:14.5px;color:var(--text2);line-height:1.65}
+.card .chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:16px}
+.chip{font-size:12px;color:var(--text2);background:var(--bg2);border:1px solid var(--border);border-radius:999px;padding:4px 10px}
+.card.dark{background:var(--encre);border-color:var(--encre);color:var(--papier)}
+.card.dark p{color:#B9C6D2}
+.card.dark .ic{background:rgba(194,154,91,.14)}
+.card.dark .ic svg{stroke:var(--laiton)}
+.card.dark .chip{background:rgba(244,247,250,.06);border-color:rgba(244,247,250,.12);color:#C9D4DE}
+.invoice{margin-top:18px;border:1px dashed #C7D3DE;border-radius:10px;padding:12px 14px;font-size:12.5px;background:var(--bg2)}
+.inv-row{display:flex;justify-content:space-between;padding:3px 0;color:var(--text2)}
+.inv-row.total{border-top:1px solid var(--border);margin-top:6px;padding-top:8px;color:var(--text);font-weight:600}
+
+/* FONDATEUR */
+.founder{background:var(--bg2)}
+.founder-card{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:center;background:#fff;border:1px solid var(--border);border-radius:24px;padding:44px;max-width:920px;margin:0 auto}
+.founder-mark{width:132px;height:132px;border-radius:50%;background:var(--encre);display:flex;align-items:center;justify-content:center;position:relative}
+.founder-mark::after{content:"";position:absolute;inset:-10px;border:2px solid var(--laiton);border-radius:50%;clip-path:polygon(50% 0,100% 0,100% 100%,50% 100%)}
+.founder-mark span{font-family:var(--display);font-size:42px;font-weight:700;color:var(--papier)}
+.founder blockquote{font-family:var(--display);font-size:clamp(20px,2.4vw,26px);font-weight:600;line-height:1.35;letter-spacing:-.3px;margin-bottom:18px}
+.founder cite{font-style:normal;font-size:14px;color:var(--text2)}
+.founder cite b{color:var(--text)}
+
+/* TARIFS */
+.toggle{display:inline-flex;background:var(--bg2);border:1px solid var(--border);border-radius:999px;padding:4px;margin:30px auto 10px}
+.toggle button{border:none;background:none;padding:8px 18px;border-radius:999px;font-size:14px;cursor:pointer;color:var(--text2)}
+.toggle button[aria-pressed="true"]{background:#fff;color:var(--bleu);font-weight:600;box-shadow:0 1px 4px rgba(15,30,46,.12)}
+.save{display:block;font-size:13px;color:var(--vert);font-weight:600;margin-bottom:36px}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:1000px;margin:0 auto;text-align:left}
+.plan{border:1.5px solid var(--border);border-radius:var(--r-lg);padding:30px;display:flex;flex-direction:column;background:#fff;position:relative}
+.plan.pop{border:2px solid var(--laiton);box-shadow:0 20px 50px rgba(15,30,46,.10)}
+.plan .ribbon{position:absolute;top:-13px;left:30px;background:var(--laiton);color:var(--encre);font-size:11px;font-weight:700;padding:4px 12px;border-radius:999px}
+.plan h3{font-size:15px;font-weight:600;color:var(--text2);margin-bottom:8px}
+.price{font-family:var(--display);font-size:46px;font-weight:700;letter-spacing:-1px;line-height:1}
+.price small{font-family:'Inter',sans-serif;font-size:15px;font-weight:400;color:var(--text2);letter-spacing:0}
+.price-note{font-size:13px;color:var(--text3);margin:8px 0 20px;min-height:20px}
+.plan ul{list-style:none;margin:0 0 26px;padding-top:20px;border-top:1px solid var(--border);flex:1}
+.plan li{display:flex;gap:9px;font-size:14px;color:var(--text2);margin-bottom:10px}
+.plan li svg{width:17px;height:17px;flex-shrink:0;margin-top:2px;stroke:var(--vert);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.plan .btn{width:100%}
+.pricing-foot{margin-top:24px;font-size:13px;color:var(--text3)}
+
+/* FAQ */
+.faq{max-width:760px;margin:44px auto 0}
+.faq details{border-bottom:1px solid var(--border)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 0;font-size:16px;font-weight:600}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"";width:12px;height:12px;flex-shrink:0;border-right:2px solid var(--text3);border-bottom:2px solid var(--text3);transform:rotate(45deg) translate(-3px,-3px);transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(-135deg) translate(-3px,-3px)}
+.faq details p{padding:0 0 22px;font-size:15px;color:var(--text2);line-height:1.7;max-width:680px}
+
+/* CTA FINAL */
+.cta{background:var(--encre);color:var(--papier);position:relative;overflow:hidden;text-align:center}
+.cta::before{content:"";position:absolute;top:-320px;left:50%;transform:translateX(-50%);width:640px;height:640px;border:3px solid rgba(194,154,91,.22);border-radius:50%;pointer-events:none}
+.cta .h2{position:relative;max-width:700px;margin-left:auto;margin-right:auto}
+.cta .lead{color:#B9C6D2;position:relative;margin-bottom:32px}
+.cta .hero-ctas{justify-content:center;position:relative}
+.cta .hero-proof{justify-content:center;position:relative}
+
+/* FOOTER */
+footer{background:#0A1622;color:#8FA1B3;padding:56px 0 32px;font-size:14px}
+.foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;padding-bottom:36px;border-bottom:1px solid rgba(244,247,250,.08)}
+.foot-grid h4{font-size:13px;color:var(--papier);font-weight:600;margin-bottom:14px}
+.foot-grid a,.foot-grid button.link{display:block;color:#8FA1B3;margin-bottom:9px;background:none;border:none;font-size:14px;cursor:pointer;text-align:left;padding:0}
+.foot-grid a:hover,.foot-grid button.link:hover{color:var(--papier)}
+.foot-about{max-width:300px;margin-top:14px;line-height:1.6}
+.foot-copy{padding-top:24px;font-size:12.5px;color:#5C6B7A;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+
+/* MODALES */
+dialog{border:none;border-radius:18px;padding:0;max-width:640px;width:calc(100% - 32px);max-height:calc(100vh - 48px);margin:auto;box-shadow:0 30px 80px rgba(0,0,0,.35)}
+dialog::backdrop{background:rgba(9,19,30,.6)}
+.dlg{padding:32px;position:relative}
+.dlg-close{position:absolute;top:14px;right:14px;width:36px;height:36px;border-radius:50%;border:none;background:var(--bg2);cursor:pointer;font-size:18px;color:var(--text2)}
+.dlg h2{font-family:var(--display);font-size:24px;margin-bottom:6px}
+.dlg .muted{font-size:14px;color:var(--text2);margin-bottom:20px}
+.legal{font-size:13.5px;color:var(--text2);line-height:1.75}
+.legal h3{font-size:14px;color:var(--text);margin:18px 0 6px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:13px;font-weight:500;margin-bottom:5px}
+.field input,.field select,.field textarea{width:100%;padding:11px 14px;border:1px solid #D5DEE7;border-radius:9px;font-size:15px;font-family:inherit;background:#fff;color:var(--text)}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--bleu);box-shadow:0 0 0 3px rgba(26,95,168,.15)}
+.field textarea{min-height:110px;resize:vertical}
+.alert{display:none;padding:12px 14px;border-radius:9px;font-size:14px;margin-bottom:16px}
+.alert.ok{background:var(--vert-clair);color:#22673F}
+.alert.err{background:#FBEAEA;color:#992E2E}
+.alert.show{display:block}
+
+/* COOKIES */
+.cookie{position:fixed;left:16px;right:16px;bottom:16px;z-index:90;max-width:520px;background:var(--encre);color:var(--papier);border-radius:14px;padding:18px 20px;box-shadow:0 20px 50px rgba(0,0,0,.3);display:none;gap:14px;align-items:center;flex-wrap:wrap;font-size:13px;line-height:1.55}
+.cookie.show{display:flex}
+.cookie p{flex:1;min-width:220px;color:#C9D4DE}
+.cookie a{color:var(--laiton);text-decoration:underline;cursor:pointer}
+.cookie .btn{padding:9px 16px;font-size:13px}
+
+/* RESPONSIVE */
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+  .app-wrap{max-width:560px;margin:0 auto;width:100%}
+  .pain-grid{grid-template-columns:1fr;gap:36px}
+  .flow{grid-template-columns:repeat(2,1fr);gap:36px 24px}
+  .flow::before{display:none}
+  .bento{grid-template-columns:1fr 1fr}
+  .c3,.c2{grid-column:span 1}
+  .plans{grid-template-columns:1fr;max-width:460px}
+  .trust-inner{grid-template-columns:1fr 1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:860px){
+  .nav-links{display:none}
+  .burger{display:block}
+  nav{background:rgba(15,30,46,.96)}
+}
+@media(max-width:640px){
+  .wrap{padding:0 16px}
+  .section{padding:72px 0}
+  .hero{padding-top:108px}
+  .hero-grid{padding-bottom:64px}
+  .hero-sub{font-size:17px}
+  .hero-ctas .btn{width:100%}
+  .f1,.f2{display:none}
+  .kpis{grid-template-columns:repeat(3,1fr)}
+  .flow,.bento,.trust-inner{grid-template-columns:1fr}
+  .founder-card{grid-template-columns:1fr;padding:28px;gap:24px;text-align:center}
+  .founder-mark{margin:0 auto;width:104px;height:104px}
+  .foot-grid{grid-template-columns:1fr}
+  .dlg{padding:26px 20px}
+  .lead{font-size:16.5px}
+}
+@media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="wrap nav-inner">
+    <a href="#" class="logo" aria-label="Lokentia — accueil">
+      <svg viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="26" fill="#16293D"/><path d="M36 26 h12 v56 h42 v12 H36 Z" fill="#F4F7FA"/><path d="M86 32 A34 34 0 0 1 52 66" fill="none" stroke="#C29A5B" stroke-width="7" stroke-linecap="round"/><circle cx="52" cy="32" r="4" fill="#C29A5B"/></svg>
+      <span>lokentia</span>
+    </a>
+    <div class="nav-links">
+      <a href="#parcours">Comment ça marche</a>
+      <a href="#fonctionnalites">Fonctionnalités</a>
+      <a href="#tarifs">Tarifs</a>
+      <a href="#faq">FAQ</a>
+      <a href="https://app.lokentia.fr">Se connecter</a>
+      <a href="https://app.lokentia.fr" class="btn btn-laiton">Essai gratuit</a>
+    </div>
+    <button class="burger" id="burger" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="mobile-menu"><span></span><span></span><span></span></button>
+  </div>
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#parcours">Comment ça marche</a>
+    <a href="#fonctionnalites">Fonctionnalités</a>
+    <a href="#tarifs">Tarifs</a>
+    <a href="#faq">FAQ</a>
+    <a href="#" data-open="dlg-contact">Contact</a>
+    <a href="https://app.lokentia.fr">Se connecter</a>
+    <a href="https://app.lokentia.fr" class="btn btn-laiton">Essai gratuit 15 jours</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="pill"><i></i>Pour les experts en état des lieux</div>
+      <h1>De la demande d'agence <em>à la facture</em>, sans rien oublier.</h1>
+      <p class="hero-sub">Lokentia réunit vos missions, vos agences, votre agenda et votre facturation dans un seul outil — conçu par un expert EDL, pour les experts EDL.</p>
+      <div class="hero-ctas">
+        <a href="https://app.lokentia.fr" class="btn btn-laiton">Démarrer l'essai gratuit
+          <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="#parcours" class="btn btn-ghost">Voir comment ça marche</a>
+      </div>
+      <div class="hero-proof">
+        <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>15 jours, toutes fonctionnalités</span>
+        <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Sans carte bancaire</span>
+        <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Sans engagement</span>
+      </div>
+    </div>
+
+    <div class="app-wrap" aria-hidden="true">
+      <div class="app">
+        <div class="app-bar"><i></i><i></i><i></i><div class="app-url">app.lokentia.fr/missions</div></div>
+        <div class="app-body">
+          <div class="app-head"><b>Cette semaine</b><small>Octobre 2026</small></div>
+          <div class="kpis">
+            <div class="kpi"><b>14</b><span>Missions planifiées</span></div>
+            <div class="kpi"><b>6</b><span>Agences actives</span></div>
+            <div class="kpi up"><b>3 120 €</b><span>CA du mois HT</span></div>
+          </div>
+          <div class="mission"><div class="when"><b>13</b><span>lun.</span></div><div><div class="m-title">EDL entrant · T3 Évry-Courcouronnes</div><div class="m-meta">Agence du Centre · 09:30</div></div><span class="badge b-plan">Planifiée</span></div>
+          <div class="mission"><div class="when"><b>13</b><span>lun.</span></div><div><div class="m-title">EDL sortant · Studio Corbeil</div><div class="m-meta">Cabinet Morel Gestion · 14:00</div></div><span class="badge b-done">À facturer</span></div>
+          <div class="mission"><div class="when"><b>14</b><span>mar.</span></div><div><div class="m-title">Pré-état des lieux · Maison Arpajon</div><div class="m-meta">Réservation en ligne · propriétaire</div></div><span class="badge b-new">Nouvelle</span></div>
+          <div class="mission"><div class="when"><b>10</b><span>ven.</span></div><div><div class="m-title">EDL sortant · T2 Massy</div><div class="m-meta">Immo Sud Essonne · facture n° 2026-118</div></div><span class="badge b-paid">Payée</span></div>
+        </div>
+      </div>
+      <div class="float f1"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div><b>Nouvelle réservation</b><span>Créneau mar. 14 · 10:00</span></div></div>
+      <div class="float f2"><div class="ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><polyline points="9 15 11 17 15 13"/></svg></div><div><b>Facture mensuelle prête</b><span>Agence du Centre · 9 missions</span></div></div>
+    </div>
+  </div>
+</header>
+
+<!-- CONFIANCE -->
+<section class="trust" aria-label="Engagements">
+  <div class="wrap trust-inner" style="padding-left:24px;padding-right:24px">
+    <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg><div><b>Données isolées</b><span>Chaque compte a son espace privé</span></div></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg><div><b>Mobile & ordinateur</b><span>Rien à installer, tout dans le navigateur</span></div></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg><div><b>Éditeur français</b><span>ImmoCheck EDL, Essonne (91)</span></div></div>
+    <div class="trust-item"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/></svg><div><b>Support humain</b><span>Réponse sous 24 h ouvrées</span></div></div>
+  </div>
+</section>
+
+<!-- PROBLÈME -->
+<section class="section">
+  <div class="wrap pain-grid">
+    <div>
+      <p class="tag">Le quotidien sans Lokentia</p>
+      <h2 class="h2">Votre métier, c'est le terrain. Pas l'administratif.</h2>
+      <p class="lead">Entre les demandes qui arrivent par téléphone, SMS et email, les créneaux à caler avec les locataires et les factures à préparer agence par agence, la gestion grignote vos soirées.</p>
+    </div>
+    <ul class="pain-list">
+      <li><div class="x">✕</div><div><b>Des demandes éparpillées</b><span>Un appel ici, un mail là, un SMS du locataire… et une mission qui passe à la trappe.</span></div></li>
+      <li><div class="x">✕</div><div><b>Un agenda qui ne parle pas à vos dossiers</b><span>Les rendez-vous sont d'un côté, les adresses et contacts de l'autre.</span></div></li>
+      <li><div class="x">✕</div><div><b>La facturation de fin de mois</b><span>Reprendre chaque mission dans un tableur pour refaire les factures de chaque agence.</span></div></li>
+      <li><div class="x">✕</div><div><b>Des agences à relancer à la main</b><span>Sans historique clair, difficile de savoir qui solliciter et quand.</span></div></li>
+    </ul>
+  </div>
+</section>
+
+<!-- PARCOURS -->
+<section class="section flow-section" id="parcours">
+  <div class="wrap">
+    <p class="tag">Comment ça marche</p>
+    <h2 class="h2">Une mission, quatre étapes,<br>un seul outil.</h2>
+    <p class="lead">Lokentia suit chaque état des lieux de la demande au paiement. Vous savez toujours où en est chaque dossier.</p>
+    <div class="flow">
+      <div class="step"><div class="step-n"></div><h3>La demande arrive</h3><p>L'agence ou le propriétaire réserve directement en ligne, ou vous créez la mission en quelques secondes.</p></div>
+      <div class="step"><div class="step-n"></div><h3>Vous planifiez</h3><p>La mission rejoint votre agenda, synchronisé avec Google Agenda. Le client reçoit sa confirmation par email.</p></div>
+      <div class="step"><div class="step-n"></div><h3>Vous réalisez</h3><p>Sur place, toutes les infos du dossier sont sur votre téléphone : adresse, contacts, type de bien.</p></div>
+      <div class="step"><div class="step-n"></div><h3>Vous facturez</h3><p>Les missions réalisées sont regroupées par agence en une facture PDF mensuelle, TVA et IBAN inclus.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FONCTIONNALITÉS -->
+<section class="section" id="fonctionnalites">
+  <div class="wrap">
+    <div class="center">
+      <p class="tag">Fonctionnalités</p>
+      <h2 class="h2">Tout ce qu'il faut. Rien de superflu.</h2>
+      <p class="lead">Pas un CRM générique adapté à la va-vite : chaque écran a été pensé pour l'état des lieux.</p>
+    </div>
+    <div class="bento">
+      <div class="card c3">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg></div>
+        <h3>Missions EDL</h3>
+        <p>Entrants, sortants, pré-états des lieux : suivez chaque mission avec son statut, son bien, ses intervenants et son historique.</p>
+        <div class="chips"><span class="chip">Entrant</span><span class="chip">Sortant</span><span class="chip">Pré-EDL</span><span class="chip">Statuts</span></div>
+      </div>
+      <div class="card c3">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
+        <h3>Facturation mensuelle par agence</h3>
+        <p>Une facture PDF professionnelle en un clic, ou toutes les missions du mois regroupées par agence.</p>
+        <div class="invoice" aria-hidden="true">
+          <div class="inv-row"><span>6 × EDL entrant</span><span>690,00 €</span></div>
+          <div class="inv-row"><span>3 × EDL sortant</span><span>345,00 €</span></div>
+          <div class="inv-row total"><span>Agence du Centre — octobre</span><span>1 035,00 € HT</span></div>
+        </div>
+      </div>
+      <div class="card c2 dark">
+        <div class="ic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg></div>
+        <h3>Réservation en ligne & extranet</h3>
+        <p>Vos clients réservent un créneau et suivent leurs dossiers depuis leur propre espace.</p>
+      </div>
+      <div class="card c2">
+        <div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <h3>Agenda synchronisé</h3>
+        <p>Vue semaine ou mois, synchronisation Google Agenda en un clic.</p>
+      </div>
+      <div class="card c2">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg></div>
+        <h3>Agences & contacts</h3>
+        <p>Agences, propriétaires, locataires : un historique complet par contact.</p>
+      </div>
+      <div class="card c3">
+        <div class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <h3>Emails & campagnes</h3>
+        <p>Envoyez confirmations, relances et campagnes vers vos agences depuis Lokentia, avec le suivi des ouvertures et des clics (intégration Brevo).</p>
+      </div>
+      <div class="card c3">
+        <div class="ic"><svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+        <h3>Tableau de bord</h3>
+        <p>Chiffre d'affaires du mois, missions à facturer, agences les plus actives : votre activité d'un coup d'œil. Rédaction assistée par IA dans la formule Pro.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FONDATEUR -->
+<section class="section founder">
+  <div class="wrap">
+    <div class="founder-card">
+      <div class="founder-mark" aria-hidden="true"><span>TL</span></div>
+      <div>
+        <p class="tag">Pourquoi Lokentia</p>
+        <blockquote>« Je réalise moi-même des états des lieux en Île-de-France. Je n'ai pas trouvé d'outil adapté à notre métier, alors je l'ai construit. »</blockquote>
+        <cite><b>Thomas Langlade</b> — expert en état des lieux, fondateur de Lokentia</cite>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TARIFS -->
+<section class="section" id="tarifs">
+  <div class="wrap center">
+    <p class="tag">Tarifs</p>
+    <h2 class="h2">Des prix clairs, sans surprise.</h2>
+    <p class="lead">15 jours d'essai complet sur toutes les fonctionnalités, puis choisissez la formule qui vous convient.</p>
+    <div class="toggle" role="group" aria-label="Période de facturation">
+      <button type="button" id="t-month" aria-pressed="true">Mensuel</button>
+      <button type="button" id="t-year" aria-pressed="false">Annuel</button>
+    </div>
+    <span class="save">Jusqu'à 2 mois offerts avec l'annuel</span>
+    <div class="plans">
+      <div class="plan">
+        <h3>Gratuit</h3>
+        <div class="price">0 €<small> /mois</small></div>
+        <div class="price-note">Pour démarrer à petite échelle</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>100 contacts</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>20 missions</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Facturation PDF</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Tableau de bord & agenda</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Support email</li>
+        </ul>
+        <a href="https://app.lokentia.fr" class="btn btn-outline">Créer mon compte</a>
+      </div>
+      <div class="plan pop">
+        <span class="ribbon">Le plus choisi</span>
+        <h3>Starter</h3>
+        <div class="price" data-m="15" data-y="12">15 €<small> /mois</small></div>
+        <div class="price-note" data-m="Sans engagement" data-y="144 € facturés par an">Sans engagement</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>500 contacts</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>100 missions</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Emails & campagnes</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Synchronisation des contacts</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Facturation avancée</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Support prioritaire</li>
+        </ul>
+        <a href="https://app.lokentia.fr" class="btn btn-primary">Essayer 15 jours gratuits</a>
+      </div>
+      <div class="plan">
+        <h3>Pro</h3>
+        <div class="price" data-m="35" data-y="28">35 €<small> /mois</small></div>
+        <div class="price-note" data-m="Sans engagement" data-y="336 € facturés par an">Sans engagement</div>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Contacts & missions illimités</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Tout Starter inclus</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Rédaction assistée par IA</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Statistiques avancées</li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Support téléphonique</li>
+        </ul>
+        <a href="https://app.lokentia.fr" class="btn btn-outline">Essayer 15 jours gratuits</a>
+      </div>
+    </div>
+    <p class="pricing-foot">Prix TTC. Changement de formule ou résiliation à tout moment.</p>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section" id="faq" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="center">
+      <p class="tag">FAQ</p>
+      <h2 class="h2">Questions fréquentes</h2>
+    </div>
+    <div class="faq">
+      <details open><summary>Que se passe-t-il à la fin des 15 jours d'essai ?</summary><p>Vous choisissez une formule payante, ou vous basculez sur la formule Gratuite. Vos données sont conservées dans tous les cas. Aucune carte bancaire n'est demandée pendant l'essai, donc aucun prélèvement surprise.</p></details>
+      <details><summary>Mes données sont-elles sécurisées ?</summary><p>Vos données sont hébergées sur une infrastructure sécurisée (Supabase) et strictement isolées de celles des autres utilisateurs. Vous restez responsable des données de vos clients ; Lokentia les traite pour votre compte dans le cadre d'un accord de sous-traitance conforme au RGPD.</p></details>
+      <details><summary>Lokentia remplace-t-il mon logiciel de saisie d'état des lieux ?</summary><p>Non : Lokentia gère tout ce qui entoure la mission (demandes, planning, clients, facturation, relances). Vous continuez à utiliser votre outil de saisie habituel sur le terrain.</p></details>
+      <details><summary>Est-ce que ça fonctionne sur téléphone ?</summary><p>Oui. Lokentia fonctionne dans le navigateur de votre smartphone, de votre tablette ou de votre ordinateur, sans rien installer.</p></details>
+      <details><summary>Puis-je changer de formule à tout moment ?</summary><p>Oui, sans frais et sans engagement minimum. Le changement s'applique immédiatement.</p></details>
+      <details><summary>Comment fonctionne l'intégration Brevo ?</summary><p>En renseignant votre clé API Brevo dans les paramètres, Lokentia importe vos contacts et récupère les statistiques d'ouverture et de clics de vos emails.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section cta">
+  <div class="wrap">
+    <h2 class="h2">Reprenez la main sur votre gestion dès cette semaine.</h2>
+    <p class="lead">Créez votre compte en deux minutes, importez vos agences et planifiez votre prochaine mission.</p>
+    <div class="hero-ctas">
+      <a href="https://app.lokentia.fr" class="btn btn-laiton">Démarrer l'essai gratuit <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <button type="button" class="btn btn-ghost" data-open="dlg-contact" data-subject="Demande de démo">Demander une démo</button>
+    </div>
+    <div class="hero-proof">
+      <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Sans carte bancaire</span>
+      <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Accès immédiat</span>
+      <span><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Résiliable à tout moment</span>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="logo">
+          <svg viewBox="0 0 120 120" aria-hidden="true"><rect width="120" height="120" rx="26" fill="#16293D"/><path d="M36 26 h12 v56 h42 v12 H36 Z" fill="#F4F7FA"/><path d="M86 32 A34 34 0 0 1 52 66" fill="none" stroke="#C29A5B" stroke-width="7" stroke-linecap="round"/><circle cx="52" cy="32" r="4" fill="#C29A5B"/></svg>
+          <span>lokentia</span>
+        </div>
+        <p class="foot-about">Le logiciel de gestion des experts en état des lieux. Édité par ImmoCheck EDL, Marolles-en-Hurepoix (91).</p>
+      </div>
+      <div>
+        <h4>Produit</h4>
+        <a href="#parcours">Comment ça marche</a>
+        <a href="#fonctionnalites">Fonctionnalités</a>
+        <a href="#tarifs">Tarifs</a>
+        <a href="https://app.lokentia.fr">Se connecter</a>
+      </div>
+      <div>
+        <h4>Aide</h4>
+        <a href="#faq">FAQ</a>
+        <button type="button" class="link" data-open="dlg-contact">Nous contacter</button>
+        <a href="mailto:contact@lokentia.fr">contact@lokentia.fr</a>
+      </div>
+      <div>
+        <h4>Légal</h4>
+        <button type="button" class="link" data-open="dlg-legal">Mentions légales & CGU</button>
+        <button type="button" class="link" data-open="dlg-legal">Politique de confidentialité</button>
+      </div>
+    </div>
+    <div class="foot-copy"><span>© 2026 Lokentia — ImmoCheck EDL</span><span>Fait en Essonne</span></div>
+  </div>
+</footer>
+
+<!-- MODALE CONTACT -->
+<dialog id="dlg-contact" aria-labelledby="contact-title">
+  <form class="dlg" id="contact-form" novalidate>
+    <button type="button" class="dlg-close" data-close aria-label="Fermer">✕</button>
+    <h2 id="contact-title">Nous contacter</h2>
+    <p class="muted">Une question, une démo ? Nous répondons sous 24 h ouvrées.</p>
+    <div class="alert ok" id="c-ok" role="status">Message envoyé, merci ! Nous revenons vers vous rapidement.</div>
+    <div class="alert err" id="c-err" role="alert"></div>
+    <div class="field"><label for="c-nom">Votre nom *</label><input id="c-nom" autocomplete="name" required placeholder="Marie Dupont"></div>
+    <div class="field"><label for="c-email">Email professionnel *</label><input id="c-email" type="email" autocomplete="email" required placeholder="marie@monentreprise.fr"></div>
+    <div class="field"><label for="c-sujet">Sujet</label>
+      <select id="c-sujet">
+        <option>Question sur les fonctionnalités</option>
+        <option>Demande de démo</option>
+        <option>Question sur les tarifs</option>
+        <option>Problème technique</option>
+        <option>Autre</option>
+      </select></div>
+    <div class="field"><label for="c-msg">Message *</label><textarea id="c-msg" required placeholder="Votre message…"></textarea></div>
+    <button type="submit" class="btn btn-primary" id="c-btn" style="width:100%">Envoyer le message</button>
+    <p style="font-size:12.5px;color:var(--text3);text-align:center;margin-top:12px">Ou écrivez-nous : <a href="mailto:contact@lokentia.fr" style="color:var(--bleu)">contact@lokentia.fr</a></p>
+  </form>
+</dialog>
+
+<!-- MODALE MENTIONS LÉGALES (contenu identique à la version en ligne) -->
+<dialog id="dlg-legal" aria-labelledby="legal-title">
+  <div class="dlg">
+    <button type="button" class="dlg-close" data-close aria-label="Fermer">✕</button>
+    <h2 id="legal-title">Mentions légales</h2>
+    <div class="legal">
+      <h3>Éditeur du site</h3>
+      <p>Lokentia est édité par ImmoCheck EDL, SASU au capital de 150 €, immatriculée au RCS d'Évry sous le numéro 994 114 163.<br>
+      Siège social : 24 Route de Cheptainville, 91630 Marolles-en-Hurepoix<br>
+      N° TVA intracommunautaire : FR95 994 114 163<br>
+      Représentée par Thomas Langlade, Président.<br>
+      Email : contact@lokentia.fr</p>
+      <h3>Hébergement</h3>
+      <p>Le site est hébergé par Vercel Inc., 340 Pine Street, Suite 701, San Francisco, CA 94104, États-Unis.</p>
+      <h3>Propriété intellectuelle</h3>
+      <p>L'ensemble du contenu de ce site (textes, images, logos) est protégé par le droit d'auteur. Toute reproduction est interdite sans autorisation préalable.</p>
+      <h3>Données personnelles (RGPD)</h3>
+      <p>Les données collectées lors de l'inscription (email, nom d'entreprise) sont utilisées uniquement pour la fourniture du service Lokentia. Elles ne sont jamais revendues à des tiers.<br><br>
+      Conformément au RGPD, vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Pour exercer ces droits : contact@lokentia.fr</p>
+      <h3>Cookies</h3>
+      <p>Ce site utilise uniquement des cookies essentiels au fonctionnement du service (authentification, préférences). Aucun cookie publicitaire n'est utilisé.</p>
+      <h3>Conditions Générales d'Utilisation</h3>
+      <p>L'accès et l'utilisation de Lokentia impliquent l'acceptation des présentes CGU.<br><br>
+      <strong>Abonnement :</strong> L'essai gratuit de 15 jours est sans engagement. À l'issue de la période d'essai, l'accès est suspendu jusqu'à souscription d'un abonnement payant.<br><br>
+      <strong>Résiliation :</strong> Vous pouvez résilier votre abonnement à tout moment. Aucun remboursement n'est effectué pour la période en cours.<br><br>
+      <strong>Responsabilité :</strong> Lokentia ne saurait être tenu responsable des pertes de données. Il est recommandé d'effectuer des sauvegardes régulières.<br><br>
+      <strong>Droit applicable :</strong> Les présentes CGU sont soumises au droit français. Tout litige relève de la compétence des tribunaux français.</p>
+    </div>
+    <button type="button" class="btn btn-primary" data-close style="margin-top:22px">Fermer</button>
+  </div>
+</dialog>
+
+<!-- COOKIES -->
+<div class="cookie" id="cookie" role="region" aria-label="Cookies">
+  <p>Nous n'utilisons que des cookies essentiels au fonctionnement du site. <a data-open="dlg-legal">En savoir plus</a></p>
+  <button type="button" class="btn btn-ghost" data-cookie="refused">Refuser</button>
+  <button type="button" class="btn btn-laiton" data-cookie="accepted">Accepter</button>
+</div>
+
+<script>
+(function(){
+  // Nav : fond au scroll
+  var nav = document.getElementById('nav');
+  function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 20); }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  // Menu mobile
+  var burger = document.getElementById('burger'), menu = document.getElementById('mobile-menu');
+  function setMenu(open){ menu.classList.toggle('open', open); burger.setAttribute('aria-expanded', open); }
+  burger.addEventListener('click', function(){ setMenu(!menu.classList.contains('open')); });
+  menu.addEventListener('click', function(e){ if(e.target.tagName === 'A') setMenu(false); });
+
+  // Tarifs mensuel / annuel
+  var tm = document.getElementById('t-month'), ty = document.getElementById('t-year');
+  function setPeriod(yearly){
+    tm.setAttribute('aria-pressed', !yearly); ty.setAttribute('aria-pressed', yearly);
+    document.querySelectorAll('.price[data-m]').forEach(function(el){
+      el.innerHTML = (yearly ? el.dataset.y : el.dataset.m) + ' €<small> /mois</small>';
+    });
+    document.querySelectorAll('.price-note[data-m]').forEach(function(el){
+      el.textContent = yearly ? el.dataset.y : el.dataset.m;
+    });
+  }
+  tm.addEventListener('click', function(){ setPeriod(false); });
+  ty.addEventListener('click', function(){ setPeriod(true); });
+
+  // Modales
+  document.addEventListener('click', function(e){
+    var opener = e.target.closest('[data-open]');
+    if(opener){
+      e.preventDefault(); setMenu(false);
+      var dlg = document.getElementById(opener.dataset.open);
+      if(opener.dataset.subject) document.getElementById('c-sujet').value = opener.dataset.subject;
+      if(dlg && !dlg.open) dlg.showModal();
+      return;
+    }
+    if(e.target.closest('[data-close]')) e.target.closest('dialog').close();
+  });
+  document.querySelectorAll('dialog').forEach(function(d){
+    d.addEventListener('click', function(e){ if(e.target === d) d.close(); });
+  });
+
+  // Cookies
+  var cookie = document.getElementById('cookie');
+  function getChoice(){ try { return localStorage.getItem('edl_cookies'); } catch(e){ return null; } }
+  if(!getChoice()) setTimeout(function(){ cookie.classList.add('show'); }, 1200);
+  cookie.querySelectorAll('[data-cookie]').forEach(function(b){
+    b.addEventListener('click', function(){
+      try { localStorage.setItem('edl_cookies', b.dataset.cookie); } catch(e){}
+      cookie.classList.remove('show');
+    });
+  });
+
+  // Formulaire de contact (même endpoint que la version en ligne)
+  function esc(s){ return s.replace(/[&<>"']/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
+  var form = document.getElementById('contact-form'), ok = document.getElementById('c-ok'), err = document.getElementById('c-err'), btn = document.getElementById('c-btn');
+  function showErr(msg){ err.textContent = msg; err.classList.add('show'); ok.classList.remove('show'); }
+  form.addEventListener('submit', async function(e){
+    e.preventDefault();
+    var nom = document.getElementById('c-nom').value.trim();
+    var email = document.getElementById('c-email').value.trim();
+    var sujet = document.getElementById('c-sujet').value;
+    var msg = document.getElementById('c-msg').value.trim();
+    if(!nom || !email || !msg) return showErr('Merci de remplir tous les champs obligatoires.');
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return showErr('Merci de saisir une adresse email valide.');
+    btn.disabled = true; btn.textContent = 'Envoi en cours…';
+    try {
+      var resp = await fetch('https://app.lokentia.fr/api/send-email', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify({
+          sender: {name: 'Lokentia Contact', email: 'contact@lokentia.fr'},
+          to: [{email: 'contact@lokentia.fr', name: 'Thomas Langlade'}],
+          replyTo: {email: email, name: nom},
+          subject: '[Lokentia] Contact : ' + sujet + ' — ' + nom,
+          htmlContent: '<p><strong>Nom :</strong> ' + esc(nom) + '</p><p><strong>Email :</strong> ' + esc(email) + '</p><p><strong>Sujet :</strong> ' + esc(sujet) + '</p><hr><p>' + esc(msg).replace(/\n/g, '<br>') + '</p>',
+          textContent: 'Nom : ' + nom + '\nEmail : ' + email + '\nSujet : ' + sujet + '\n\nMessage :\n' + msg
+        })
+      });
+      if(!resp.ok) throw new Error();
+      ok.classList.add('show'); err.classList.remove('show'); form.reset();
+    } catch(_) {
+      showErr("Erreur lors de l'envoi. Écrivez-nous directement à contact@lokentia.fr");
+    }
+    btn.disabled = false; btn.textContent = 'Envoyer le message';
+  });
+})();
+</script>
+</body>
+</html>
