@@ -1,6 +1,6 @@
 # Conditions Générales de Vente et d'Utilisation (CGVU) — Lokentia
 
-*Version 1.0 — en vigueur au [DATE DE MISE EN LIGNE]*
+*Version 1.0 — en vigueur au 9 octobre 2026*
 
 > ⚠️ **Document préparatoire.** Ce texte constitue une base de travail sérieuse adaptée au fonctionnement réel de Lokentia, mais il doit être relu et validé par un avocat avant vos premiers abonnements payants.
 

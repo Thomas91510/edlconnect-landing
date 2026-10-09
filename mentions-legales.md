@@ -1,6 +1,6 @@
 # Mentions légales — lokentia.fr et app.lokentia.fr
 
-*[DATE DE MISE EN LIGNE]*
+*9 octobre 2026*
 
 **Éditeur du site et du service**
 Lokentia est édité par **ImmoCheck EDL**, SASU au capital de 150 €, immatriculée au RCS d'Évry sous le numéro 994 114 163.

@@ -4,7 +4,8 @@ Rien de ce dossier n'est en production tant que les étapes ci-dessous ne sont p
 
 ## Avant
 
-- [ ] Compléter les dates `[DATE DE MISE EN LIGNE]` dans les 4 fichiers `.md` juridiques, puis `python3 scripts/build-legal.py`
+- [ ] Remplacer « 9 octobre 2026 » par la vraie date de mise en ligne dans les 4 fichiers `.md` juridiques
+      (`sed -i 's/9 octobre 2026/JJ mois AAAA/' cgvu-lokentia.md dpa-sous-traitance.md mentions-legales.md politique-confidentialite.md`), puis `python3 scripts/build-legal.py`
 - [ ] Faire relire CGVU, politique de confidentialité et DPA par un avocat
 - [ ] Vérifier les chiffres affichés (500+ missions, 2 h gagnées par semaine) et la lettre du fondateur
 - [ ] Mettre en ligne le correctif de l'app `edlconnect-crm` (CORS de `/api/contact-form`, branche `claude/compassionate-maxwell-yn1axw`) — sinon le formulaire de contact ne marchera pas

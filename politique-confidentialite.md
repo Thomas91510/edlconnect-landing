@@ -1,6 +1,6 @@
 # Politique de confidentialité — Lokentia
 
-*Version 1.0 — [DATE DE MISE EN LIGNE]*
+*Version 1.0 — 9 octobre 2026*
 
 > ⚠️ Base de travail à faire valider par un avocat.
 

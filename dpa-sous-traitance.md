@@ -1,6 +1,6 @@
 # Accord de sous-traitance des données personnelles (DPA) — Lokentia
 
-*Annexe aux CGVU — Version 1.0 — [DATE]*
+*Annexe aux CGVU — Version 1.0 — 9 octobre 2026*
 
 > ⚠️ Document préparatoire conforme à l'esprit de l'article 28 du RGPD, à faire valider par un avocat avant les premiers abonnements payants.
 

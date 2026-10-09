@@ -431,6 +431,21 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
 @media(max-width:980px){.also ul{grid-template-columns:1fr 1fr}}
 @media(max-width:640px){.also ul{grid-template-columns:1fr}}
 
+/* CAPTURES */
+.app-shot{display:block;width:100%;height:auto}
+.shot{margin:0;border-radius:16px;overflow:hidden;border:1px solid var(--border);box-shadow:0 18px 44px rgba(15,30,46,.10);background:#fff}
+.shot img{display:block;width:100%;height:auto}
+.tour{background:var(--bg2)}
+.tour-tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:36px 0 22px}
+.tour-tabs button{border:1px solid var(--border);background:#fff;border-radius:999px;padding:9px 18px;font-size:14px;font-weight:500;color:var(--text2);cursor:pointer;transition:all .15s}
+.tour-tabs button:hover{border-color:var(--bleu);color:var(--bleu)}
+.tour-tabs button[aria-selected="true"]{background:var(--encre);border-color:var(--encre);color:#fff}
+.tour-frame{margin:0 auto;max-width:1040px;border-radius:16px;overflow:hidden;background:#fff;box-shadow:0 30px 80px rgba(15,30,46,.16);border:1px solid var(--border)}
+.tour-frame img{display:block;width:100%;height:auto;transition:opacity .2s}
+.tour-txt{text-align:center;font-size:16px;color:var(--text);margin-top:20px;min-height:26px}
+.tour-note{text-align:center;font-size:12.5px;color:var(--text3);margin-top:6px}
+@media(max-width:640px){.tour-tabs{justify-content:flex-start;flex-wrap:nowrap;overflow-x:auto;margin:28px -16px 18px;padding:0 16px 4px}.tour-tabs button{flex-shrink:0}}
+
 /* RESPONSIVE */
 @media(max-width:980px){
   .hero-grid{grid-template-columns:1fr;gap:48px}
@@ -655,24 +670,13 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
       </div>
     </div>
 
-    <div class="app-wrap" aria-hidden="true">
+    <div class="app-wrap">
       <div class="app">
-        <div class="app-bar"><i></i><i></i><i></i><div class="app-url">app.lokentia.fr/missions</div></div>
-        <div class="app-body">
-          <div class="app-head"><b>Cette semaine</b><small>Octobre 2026</small></div>
-          <div class="kpis">
-            <div class="kpi"><b>14</b><span>Missions planifiées</span></div>
-            <div class="kpi"><b>6</b><span>Agences actives</span></div>
-            <div class="kpi up"><b>3</b><span>Nouvelles demandes</span></div>
-          </div>
-          <div class="mission"><div class="when"><b>13</b><span>lun.</span></div><div><div class="m-title">EDL entrant · T3 Évry-Courcouronnes</div><div class="m-meta">Agence du Centre · 09:30</div></div><span class="badge b-plan">Planifiée</span></div>
-          <div class="mission"><div class="when"><b>13</b><span>lun.</span></div><div><div class="m-title">EDL sortant · Studio Corbeil</div><div class="m-meta">Cabinet Morel Gestion · 14:00</div></div><span class="badge b-plan">Planifiée</span></div>
-          <div class="mission"><div class="when"><b>14</b><span>mar.</span></div><div><div class="m-title">Pré-état des lieux · Maison Arpajon</div><div class="m-meta">Réservation en ligne · propriétaire</div></div><span class="badge b-new">Nouvelle</span></div>
-          <div class="mission"><div class="when"><b>10</b><span>ven.</span></div><div><div class="m-title">EDL sortant · T2 Massy</div><div class="m-meta">Immo Sud Essonne · rapport envoyé</div></div><span class="badge b-paid">Réalisée</span></div>
-        </div>
+        <div class="app-bar"><i></i><i></i><i></i><div class="app-url">app.lokentia.fr</div></div>
+        <img class="app-shot" src="captures/aujourdhui.webp" width="1600" height="1000" alt="Écran « Aujourd'hui » de Lokentia : réservations à confirmer, planning, demandes d'avis et chiffres clés">
       </div>
-      <div class="float f1"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div><b>Nouvelle réservation</b><span>Créneau mar. 14 · 10:00</span></div></div>
-      <div class="float f2"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><b>Confirmation envoyée</b><span>Locataire · ouverte à 18:42</span></div></div>
+      <div class="float f1" aria-hidden="true"><div class="ic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div><div><b>Nouvelle réservation</b><span>Créneau mar. 14 · 10:00</span></div></div>
+      <div class="float f2" aria-hidden="true"><div class="ic"><svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div><b>Confirmation envoyée</b><span>Locataire · ouverte à 18:42</span></div></div>
     </div>
   </div>
 </header>
@@ -813,6 +817,31 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
   </div>
 </section>
 
+<!-- VISITE GUIDÉE -->
+<section class="section tour" id="visite">
+  <div class="wrap">
+    <div class="center">
+      <p class="tag">Visite guidée</p>
+      <h2 class="h2">Découvrez Lokentia, écran par écran.</h2>
+      <p class="lead">L'application telle que vous l'utiliserez au quotidien.</p>
+    </div>
+    <div class="tour-tabs" role="tablist" aria-label="Écrans de Lokentia">
+      <button role="tab" aria-selected="true" data-shot="aujourdhui" data-txt="Votre journée en un écran : réservations à confirmer, rendez-vous du jour, demandes d'avis et chiffres clés.">Aujourd'hui</button>
+      <button role="tab" aria-selected="false" data-shot="missions" data-txt="Toutes vos missions, regroupées par mois, avec leur statut.">Missions</button>
+      <button role="tab" aria-selected="false" data-shot="reservations" data-txt="Les demandes reçues en ligne, à confirmer en un clic.">Réservations</button>
+      <button role="tab" aria-selected="false" data-shot="agenda" data-txt="Votre semaine, synchronisée avec Google Agenda.">Agenda</button>
+      <button role="tab" aria-selected="false" data-shot="prospection" data-txt="Le pipeline de vos agences prospects, de « à contacter » à « gagné ».">Prospection</button>
+      <button role="tab" aria-selected="false" data-shot="campagnes" data-txt="Vos campagnes d'emails et leurs résultats : ouvertures, clics, réponses.">Campagnes</button>
+    </div>
+    <figure class="tour-frame">
+      <div class="app-bar"><i></i><i></i><i></i><div class="app-url">app.lokentia.fr</div></div>
+      <img id="tour-img" src="captures/aujourdhui.webp" width="1600" height="1000" alt="Écran Aujourd'hui de Lokentia" loading="lazy">
+    </figure>
+    <p class="tour-txt" id="tour-txt" aria-live="polite">Votre journée en un écran : réservations à confirmer, rendez-vous du jour, demandes d'avis et chiffres clés.</p>
+    <p class="tour-note">Captures de l'application réelle, avec des données fictives.</p>
+  </div>
+</section>
+
 <!-- FONCTIONNALITÉS : ZOOMS -->
 <section class="section" style="padding-top:0">
   <div class="wrap">
@@ -828,19 +857,9 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Statuts en temps réel</b> : nouvelle, planifiée, réalisée</span></li>
         </ul>
       </div>
-      <div class="panel" aria-hidden="true">
-        <div class="panel-card">
-          <h4>Semaine du 13 octobre</h4>
-          <div class="sub">9 missions · 2 créneaux libres</div>
-          <div class="week">
-            <div><div class="day">LUN</div><div class="slot s-in"><b>09:30</b>Entrant T3</div><div class="slot s-out"><b>14:00</b>Sortant studio</div></div>
-            <div><div class="day">MAR</div><div class="slot s-pre"><b>10:00</b>Pré-EDL</div><div class="slot s-in"><b>15:30</b>Entrant T2</div></div>
-            <div><div class="day">MER</div><div class="slot s-out"><b>09:00</b>Sortant T4</div><div class="slot s-empty"></div></div>
-            <div><div class="day">JEU</div><div class="slot s-in"><b>11:00</b>Entrant maison</div><div class="slot s-out"><b>16:00</b>Sortant T2</div></div>
-            <div><div class="day">VEN</div><div class="slot s-out"><b>10:30</b>Sortant T1</div><div class="slot s-empty"></div></div>
-          </div>
-        </div>
-      </div>
+      <figure class="shot">
+        <img src="captures/zoom-agenda.webp" width="1200" height="579" alt="Agenda de la semaine dans Lokentia, avec les missions de chaque jour" loading="lazy">
+      </figure>
     </div>
 
     <div class="zoom rev">
@@ -897,38 +916,25 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
           <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Rédaction assistée par IA</b> dans la formule Pro</span></li>
         </ul>
       </div>
-      <div class="panel" aria-hidden="true">
-        <div class="panel-card">
-          <h4>Campagne « Disponibilités de novembre »</h4>
-          <div class="sub">Envoyée à 32 agences · taux d'ouverture</div>
-          <div class="mail-row"><div>Agence du Centre<small>Ouvert 3 fois · lien cliqué</small></div><div class="meter"><i style="width:100%"></i></div><div class="pct">✓</div></div>
-          <div class="mail-row"><div>Immo Sud Essonne<small>Ouvert hier à 18:42</small></div><div class="meter"><i style="width:100%"></i></div><div class="pct">✓</div></div>
-          <div class="mail-row"><div>Cabinet Morel Gestion<small>Non ouvert · à relancer</small></div><div class="meter"><i style="width:0"></i></div><div class="pct" style="color:var(--ambre)">!</div></div>
-          <div class="mail-row"><div><b>Total campagne</b><small>12 ouvertures sur 32</small></div><div class="meter"><i style="width:38%"></i></div><div class="pct">38 %</div></div>
-        </div>
-      </div>
+      <figure class="shot">
+        <img src="captures/zoom-campagnes.webp" width="1200" height="434" alt="Suivi des campagnes d'emails : envois, ouvertures, clics et réponses" loading="lazy">
+      </figure>
     </div>
 
     <div class="zoom rev">
       <div class="zoom-txt">
-        <p class="tag">Tableau de bord</p>
-        <h3>Pilotez votre activité, pas seulement votre agenda.</h3>
-        <p>Combien de missions ce mois-ci ? Quelles agences vous sollicitent le plus ? Lesquelles n'ont rien envoyé depuis longtemps ? Les réponses sont sur votre tableau de bord.</p>
+        <p class="tag">Missions</p>
+        <h3>Toutes vos missions, classées mois par mois.</h3>
+        <p>Chaque mission garde son agence, son adresse, le type d'état des lieux et le bien concerné. Vous retrouvez un dossier en quelques secondes et voyez d'un coup d'œil le volume de chaque mois.</p>
         <ul class="ticks">
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Volume de missions</b> mois par mois</span></li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Classement des agences</b> les plus actives</span></li>
-          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Statistiques avancées</b> dans la formule Pro</span></li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Regroupement par mois</b> avec le nombre de missions</span></li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Filtres par statut</b> : planifiées, en cours, terminées, annulées</span></li>
+          <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg><span><b>Le bien en un coup d'œil</b> : type, typologie, meublé ou nu</span></li>
         </ul>
       </div>
-      <div class="panel" aria-hidden="true">
-        <div class="panel-card">
-          <h4>Missions réalisées</h4>
-          <div class="sub">6 derniers mois</div>
-          <div class="bars"><i style="height:45%"></i><i style="height:58%"></i><i style="height:52%"></i><i style="height:70%"></i><i style="height:66%"></i><i class="hi" style="height:88%"></i></div>
-          <div class="bars-l"><span>mai</span><span>juin</span><span>juil.</span><span>août</span><span>sept.</span><span>oct.</span></div>
-          <div class="mini-kpis"><div><b>41</b><span>Missions en oct.</span></div><div><b>6</b><span>Agences actives</span></div><div><b>38 %</b><span>Ouverture emails</span></div></div>
-        </div>
-      </div>
+      <figure class="shot">
+        <img src="captures/zoom-missions.webp" width="1200" height="621" alt="Liste des missions regroupées par mois, avec type d'état des lieux, bien et statut" loading="lazy">
+      </figure>
     </div>
 
   </div>
@@ -1239,6 +1245,17 @@ dialog::backdrop{background:rgba(9,19,30,.6)}
     choix = ''; go.disabled = true; go.textContent = 'Choisissez un créneau';
     demo.querySelectorAll('.slots button[role="radio"]').forEach(function(x){ x.setAttribute('aria-checked', 'false'); });
     document.getElementById('demo-step1').hidden = false; document.getElementById('demo-step2').hidden = true;
+  });
+
+  // Visite guidée
+  var tabs = document.querySelectorAll('.tour-tabs [role="tab"]'), timg = document.getElementById('tour-img'), ttxt = document.getElementById('tour-txt');
+  tabs.forEach(function(t){
+    t.addEventListener('click', function(){
+      tabs.forEach(function(x){ x.setAttribute('aria-selected', x === t); });
+      timg.src = 'captures/' + t.dataset.shot + '.webp';
+      timg.alt = 'Écran ' + t.textContent + ' de Lokentia';
+      ttxt.textContent = t.dataset.txt;
+    });
   });
 
   // Formulaire de contact (même endpoint que la version en ligne)
