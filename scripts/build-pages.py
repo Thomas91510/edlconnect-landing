@@ -4,7 +4,7 @@
 Le contenu est dans PAGES ci-dessous ; modifier puis relancer
     python3 scripts/build-pages.py
 """
-import html, json, pathlib
+import html, json, pathlib, re
 
 RACINE = pathlib.Path(__file__).resolve().parent.parent
 URL = 'https://lokentia.fr/'
@@ -108,6 +108,91 @@ PAGES = [
   },
 ]
 
+
+AUTEUR = 'Thomas Langlade'
+DATE_PUB = ('2026-10-09', '9 octobre 2026')
+
+ARTICLES = [
+  {
+    'fichier': 'agences-partenaires-expert-edl.html',
+    'court': "Trouver des agences partenaires",
+    'titre': "Expert en état des lieux : trouver et fidéliser des agences partenaires | Lokentia",
+    'description': "Cibler les bonnes agences, se présenter, relancer sans insister et fidéliser : la méthode pour développer son réseau d'agences quand on est expert en état des lieux.",
+    'tag': "Ressources · Développer son activité",
+    'h1': "Trouver et fidéliser des <em>agences partenaires</em>",
+    'intro': "Pour un expert en état des lieux, quelques agences fidèles valent mieux qu'une longue liste de contacts froids. Voici une méthode simple pour construire ce réseau, puis le garder.",
+    'lecture': '6 min',
+    'sections': [
+      ("1. Cibler les bonnes agences",
+       ["Toutes les agences n'ont pas besoin de vous. Concentrez-vous sur celles qui ont une activité de <b>gestion locative</b> : ce sont elles qui organisent les entrées et sorties de locataires toute l'année.",
+        "Limitez-vous à une zone que vous pouvez couvrir sans passer vos journées en voiture. Mieux vaut être très réactif sur un secteur que lent sur trois départements."],
+       ["agences avec un service gestion locative",
+        "administrateurs de biens et cabinets de gestion",
+        "propriétaires bailleurs qui gèrent en direct",
+        "dans un rayon de trajet raisonnable"]),
+      ("2. Préparer une présentation claire",
+       ["Avant le premier contact, une agence veut savoir rapidement si vous pouvez l'aider. Réunissez sur une page :"],
+       ["votre <b>zone d'intervention</b> et vos <b>délais</b> habituels",
+        "les <b>types de missions</b> : entrant, sortant, pré-état des lieux",
+        "vos <b>tarifs</b>, ou au moins une fourchette",
+        "un <b>exemple de rapport</b> anonymisé",
+        "votre <b>assurance responsabilité civile professionnelle</b>"]),
+      ("3. Le premier contact",
+       ["Un email court et personnalisé, suivi quelques jours plus tard d'un appel, fonctionne mieux qu'un long message générique. Proposez quelque chose de concret : réaliser une première mission pour juger sur pièce.",
+        "Si vous prospectez par email, restez dans le cadre fixé par la CNIL pour la prospection entre professionnels : un message en rapport avec l'activité de la personne, et un moyen simple de ne plus être sollicité."],
+       None),
+      ("4. Relancer sans insister",
+       ["La plupart des réponses arrivent après une relance, pas après le premier message. Espacez vos relances de plusieurs semaines et apportez à chaque fois une information utile (disponibilités du mois, nouveau secteur couvert).",
+        "Savoir qui a ouvert votre email aide à choisir qui rappeler en premier. Dans Lokentia, le suivi des ouvertures et le pipeline de prospection servent exactement à ça."],
+       None),
+      ("5. Fidéliser : la régularité avant tout",
+       ["Une agence garde un expert sur lequel elle peut compter. Ce qui compte le plus pour elle :"],
+       ["la <b>ponctualité</b> aux rendez-vous",
+        "un <b>délai de remise du rapport</b> court et constant",
+        "une <b>prise de rendez-vous simple</b>, idéalement en ligne",
+        "la possibilité de <b>suivre ses dossiers</b> sans vous appeler",
+        "un interlocuteur qui répond"]),
+      ("6. Mesurer qui vous fait travailler",
+       ["Regardez chaque mois quelles agences vous confient des missions, et lesquelles ont ralenti. Une agence silencieuse depuis deux mois mérite un appel : un changement de gestionnaire, un concurrent, ou simplement un oubli."],
+       None),
+    ],
+  },
+  {
+    'fichier': 'eviter-rendez-vous-manques-etat-des-lieux.html',
+    'court': "Éviter les rendez-vous manqués",
+    'titre': "Rendez-vous d'état des lieux manqués : 7 habitudes pour les éviter | Lokentia",
+    'description': "Locataire absent, clés introuvables, mauvaise adresse : 7 habitudes simples pour éviter les rendez-vous d'état des lieux manqués et les déplacements pour rien.",
+    'tag': "Ressources · Organisation",
+    'h1': "Rendez-vous manqués : <em>7 habitudes</em> pour les éviter",
+    'intro': "Un état des lieux qui n'a pas lieu, c'est un déplacement perdu, un créneau gâché et une agence agacée. La plupart de ces échecs se jouent avant le rendez-vous.",
+    'lecture': '5 min',
+    'sections': [
+      ("1. Confirmer par écrit, avec tous les détails",
+       ["Une confirmation par email évite les malentendus. Elle doit contenir l'adresse complète (bâtiment, étage, code d'accès), la date, l'heure, la durée estimée et ce qu'il faut prévoir : clés, badges, présence des deux parties."],
+       None),
+      ("2. Avoir le bon contact",
+       ["Passer uniquement par l'agence ajoute un intermédiaire. Demandez systématiquement les coordonnées directes du locataire, ou du propriétaire, pour pouvoir le joindre en cas d'imprévu."],
+       None),
+      ("3. Envoyer un rappel la veille",
+       ["Un rappel la veille rattrape les oublis et les changements de dernière minute. C'est la mesure la plus efficace, et elle s'automatise : Lokentia l'envoie sans que vous ayez à y penser."],
+       None),
+      ("4. Clarifier la question des clés",
+       ["Qui apporte les clés, qui les récupère, où les déposer ? Pour une sortie comme pour une entrée, réglez ce point dans la confirmation plutôt que sur le palier."],
+       None),
+      ("5. Prévoir des trajets réalistes",
+       ["Regroupez les missions par secteur et laissez une marge entre deux rendez-vous. Un retard en cascade finit souvent par un rendez-vous annulé en fin de journée."],
+       None),
+      ("6. Convenir d'une règle en cas d'absence",
+       ["Mettez-vous d'accord à l'avance avec vos agences : déplacement facturé ou non, délai de prévenance, nouveau créneau. Une règle connue de tous évite les discussions après coup.",
+        "Pour un état des lieux de sortie qui ne peut pas être établi contradictoirement, la loi du 6 juillet 1989 (article 3-2) prévoit le recours à un commissaire de justice : un point à rappeler à l'agence si la situation se bloque."],
+       None),
+      ("7. Laisser le client choisir son créneau",
+       ["Quand c'est le client qui choisit l'heure, il s'en souvient mieux et a moins de raisons de la déplacer. Une page de réservation en ligne lui laisse ce choix parmi vos disponibilités réelles."],
+       None),
+    ],
+  },
+]
+
 GABARIT = (RACINE / 'scripts' / 'page-template.html').read_text()
 
 def rendre(pg):
@@ -117,14 +202,31 @@ def rendre(pg):
         corps += [f'<p>{p}</p>' for p in paras]
         if puces:
             corps.append('<ul class="ticks">' + ''.join(f'<li>{CHECK}<span>{x}</span></li>' for x in puces) + '</ul>')
-    faq = ''.join(f'<details><summary>{html.escape(q)}</summary><p>{html.escape(r)}</p></details>' for q, r in pg['faq'])
-    autres = ''.join(f'<a href="{a["fichier"]}">{a["court"]} →</a>' for a in PAGES if a is not pg)
-    ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
-        {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": r}} for q, r in pg['faq']]}
+    faq = ''.join(f'<details><summary>{html.escape(q)}</summary><p>{html.escape(r)}</p></details>' for q, r in pg.get('faq', []))
+    article = 'lecture' in pg
+    if article:
+        ld = {"@context": "https://schema.org", "@type": "Article", "headline": re.sub('<[^>]+>', '', pg['h1']),
+              "description": pg['description'], "datePublished": DATE_PUB[0], "inLanguage": "fr",
+              "author": {"@type": "Person", "name": AUTEUR},
+              "publisher": {"@type": "Organization", "name": "Lokentia"},
+              "image": URL + "proposition/og-image.jpg"}
+    elif not pg.get('faq'):
+        ld = {"@context": "https://schema.org", "@type": "CollectionPage", "name": pg['titre'], "description": pg['description']}
+    else:
+        ld = {"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+            {"@type": "Question", "name": q, "acceptedAnswer": {"@type": "Answer", "text": r}} for q, r in pg['faq']]}
+    faq_bloc = f'<section class="faq">\n<h2>Questions fréquentes</h2>\n{faq}\n</section>' if pg.get('faq') else ''
+    crumb = '<a href="./">Accueil</a> · ' + ('<a href="ressources.html">Ressources</a>' if article else html.escape(pg['tag']))
+    meta = f'<p class="meta">Par {AUTEUR} · {DATE_PUB[1]} · {pg["lecture"]} de lecture</p>' if article else ''
+    groupe = ARTICLES if article else PAGES
+    autres = ''.join(f'<a href="{a["fichier"]}">{a["court"]} →</a>' for a in groupe if a is not pg)
+    if article:
+        autres = '<a href="ressources.html">Toutes les ressources →</a>' + autres
     rempl = {
         '{{TITRE}}': html.escape(pg['titre']), '{{DESCRIPTION}}': html.escape(pg['description']),
         '{{URL}}': URL + 'proposition/' + pg['fichier'], '{{TAG}}': pg['tag'], '{{H1}}': pg['h1'],
-        '{{INTRO}}': pg['intro'], '{{CORPS}}': '\n'.join(corps), '{{FAQ}}': faq, '{{AUTRES}}': autres,
+        '{{INTRO}}': pg['intro'], '{{CORPS}}': '\n'.join(corps), '{{FAQ_BLOC}}': faq_bloc, '{{AUTRES}}': autres,
+        '{{CRUMB}}': crumb, '{{META}}': meta,
         '{{LDJSON}}': json.dumps(ld, ensure_ascii=False),
     }
     out = GABARIT
@@ -132,6 +234,20 @@ def rendre(pg):
         out = out.replace(k, v)
     return out
 
-for pg in PAGES:
+for pg in PAGES + ARTICLES:
     (RACINE / 'proposition' / pg['fichier']).write_text(rendre(pg))
     print('écrit', pg['fichier'])
+
+# Index de la rubrique Ressources
+cartes = ''.join(f'<a href="{a["fichier"]}"><b>{re.sub("<[^>]+>", "", a["h1"])}</b><span>{a["description"]}</span><small>Lire · {a["lecture"]}</small></a>' for a in ARTICLES)
+index = {
+    'fichier': 'ressources.html', 'court': 'Ressources',
+    'titre': "Ressources pour les experts en état des lieux | Lokentia",
+    'description': "Conseils pratiques pour les experts en état des lieux : développer son réseau d'agences, organiser ses rendez-vous, gagner du temps sur la gestion.",
+    'tag': 'Ressources', 'h1': "Ressources pour les <em>experts en état des lieux</em>",
+    'intro': "Des conseils concrets, tirés du terrain, pour développer et organiser votre activité.",
+    'sections': [], 'faq': [],
+}
+page = rendre(index).replace('<main class="wrap">\n', '<main class="wrap">\n<div class="cards">' + cartes + '</div>\n', 1)
+(RACINE / 'proposition' / 'ressources.html').write_text(page)
+print('écrit ressources.html')
